@@ -14,16 +14,19 @@ Meteor.methods({
   }
 });
 
-console.log(SmoochBase.appUsers.sendMessage);
-
 Meteor.methods({
-  'sendMessage'({ destUserId, msg, role, actions, items, name, email }) {
+  'sendMessage'({ destUserId, msg, role, actions, items, name, email, mediaUrl }) {
     var msgData = {
       role: role,
       text: msg,
       name: name,
-      email: email
+      email: email,
+      actions: actions,
+      mediaUrl: mediaUrl,
+      items:items
     }
+
+    console.log(msgData);
 
     console.log("sending message to: " + destUserId + " --- with contents: " + msgData);
     SmoochBase.appUsers.sendMessage(destUserId, msgData);
