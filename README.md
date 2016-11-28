@@ -14,15 +14,17 @@ A sample business system built with Meteor and the Smooch API.
 
 3. Configure a webhook:
 
-  Configure a Smooch webhook to send appUser messages to your smoochDesk app at the "/hook" route
+  Configure a [Smooch webhook](https://app.smooch.io/integrations/webhook) to send "_All Triggers_" to your smoochDesk app at the "/hook" route
 
-4. Configure your secret keys
+4. Configure your secret keys and appToken
 
-  Obtain your keyId and secret form Smooch, and set your SMOOCH_KEY_ID and SMOOCH_SECRET environment vars, or set them directly in _sever/messages.js_ add your Smooch keyId and secret
+  Using the _settings.json.example_ file as a guide, create a _settings.json_ file that contains your appToken, secret key, and key ID
 
 5. Run it:
 
-  `meteor run`
+  `meteor --settings settings.json`
+
+  You can visit "/web-messenger" to send test messages as an end-user
 
 ## Based on Meteor Slack
 

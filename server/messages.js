@@ -3,9 +3,9 @@ const process = require('process');
 //import { smooch } from 'smooch-core';
 
 var SmoochBase = new smooch({
-  keyId: process.env.SMOOCH_KEY_ID,
-  secret: process.env.SMOOCH_SECRET,
-  scope: 'app', // app or appUser
+  keyId: Meteor.settings.smoochKeyId,
+  secret: Meteor.settings.smoochSecret,
+  scope: 'app',
 })
 
 Meteor.methods({
