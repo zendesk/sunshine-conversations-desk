@@ -1,0 +1,5 @@
+{
+    "smoochKeyId": "your_key_id",
+    "smoochSecret": "your_secret",
+    "smoochAppToken": "your_apptoken"
+}
