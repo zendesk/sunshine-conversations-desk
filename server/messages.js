@@ -1,9 +1,10 @@
 var smooch = require('smooch-core');
+const process = require('process');
 //import { smooch } from 'smooch-core';
 
 var SmoochBase = new smooch({
-  keyId: 'app_582d3ffb5e1e583300447d8c',
-  secret: 'NGKMzMLhmsP3VxRr33mVHpMa',
+  keyId: process.env.SMOOCH_KEY_ID,
+  secret: process.env.SMOOCH_SECRET,
   scope: 'app', // app or appUser
 })
 
