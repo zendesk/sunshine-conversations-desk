@@ -1,3 +1,4 @@
 let g:syntastic_html_tidy_ignore_errors = [ '<template> is not recognized!', '' ]
 autocmd BufNewFile,BufRead *.html set syntax=mustache
 autocmd BufNewFile,BufRead *.vimlocal set syntax=vim
+set shiftwidth=2
