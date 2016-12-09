@@ -18,7 +18,7 @@ A sample business system built with Meteor and the Smooch API.
 
 4. Configure your secret keys
 
-  In _sever/messages.js_ add your Smooch keyId and secret
+  Obtain your keyId and secret form Smooch, and set your SMOOCH_KEY_ID and SMOOCH_SECRET environment vars, or set them directly in _sever/messages.js_ add your Smooch keyId and secret
 
 5. Run it:
 
