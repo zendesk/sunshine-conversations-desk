@@ -1,6 +1,4 @@
 var smooch = require('smooch-core');
-const process = require('process');
-//import { smooch } from 'smooch-core';
 
 var SmoochBase = new smooch({
   keyId: Meteor.settings.smoochKeyId,
