@@ -1,0 +1,15 @@
+<template name="settings">
+  {{#contentFor 'header'}}
+  <h1>Integrations</h1>
+  {{/contentFor}}
+  {{> home}}
+
+  <ul>
+  {{#each integrations}}
+  <li>
+    <h2>{{type}}</h2>
+  </li>
+  {{/each}}
+  </ul>
+
+</template>

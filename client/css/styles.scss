@@ -124,6 +124,12 @@ aside {
   padding: $padding;
   box-sizing: border-box;
   z-index: 2;
+  .settings {
+    display: inline;
+    float: right;
+    padding-right: 20px;
+    color: white;
+  }
   &, a {
     color: lighten($primary, 30%);
     text-decoration: none;
