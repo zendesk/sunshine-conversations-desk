@@ -1,9 +1,4 @@
-Meteor.methods({
-  'sayHello'({msg}) {
-    console.log('hello');
-    console.log(msg);
-  }
-});
+const appId = Meteor.settings.smoochAppId
 
 Meteor.methods({
   'sendMessage'({destUserId, msg, role, actions, items, name, email, mediaUrl}) {
@@ -19,8 +14,11 @@ Meteor.methods({
 
     console.log(msgData);
 
-    console.log('sending message to: ' + destUserId + ' --- with contents: ' + msgData);
-    SmoochApi.appUsers.sendMessage(destUserId, msgData);
+    SmoochApi.appUsers.sendMessage({
+      appId,
+      userId: destUserId,
+      message: msgData
+    });
 
   }
 });

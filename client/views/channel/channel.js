@@ -1,13 +1,3 @@
-Meteor.call('sayHello', {
-  msg: 'world'
-}, (err, res) => {
-  if (err) {
-    alert(err);
-  } else {
-    // success!
-  }
-});
-
 Template.channel.onCreated(function () {
   var instance = this;
   // Listen for changes to reactive variables (such as Router.current()).
