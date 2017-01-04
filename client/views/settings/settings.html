@@ -4,12 +4,16 @@
   {{/contentFor}}
   {{> home}}
 
-  <ul>
-  {{#each integrations}}
-  <li>
-    <h2>{{type}}</h2>
-  </li>
-  {{/each}}
-  </ul>
+  {{#if available}}
+    <ul>
+    {{#each integrations}}
+    <li>
+      <h2>{{type}}</h2>
+    </li>
+    {{/each}}
+    </ul>
+  {{else}}
+    <h1>An account scope key is required for managing integrations</h1>
+  {{/if}}
 
 </template>

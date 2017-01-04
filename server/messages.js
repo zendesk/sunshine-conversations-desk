@@ -1,11 +1,3 @@
-var smooch = require('smooch-core');
-
-var SmoochBase = new smooch({
-  keyId: Meteor.settings.smoochKeyId,
-  secret: Meteor.settings.smoochSecret,
-  scope: 'app',
-})
-
 Meteor.methods({
   'sayHello'({msg}) {
     console.log('hello');
@@ -28,7 +20,7 @@ Meteor.methods({
     console.log(msgData);
 
     console.log('sending message to: ' + destUserId + ' --- with contents: ' + msgData);
-    SmoochBase.appUsers.sendMessage(destUserId, msgData);
+    SmoochApi.appUsers.sendMessage(destUserId, msgData);
 
   }
 });
