@@ -1,4 +1,5 @@
-$aside: 220px;
+$left: 220px;
+$right: 220px;
 $top: 53px;
 
 $primary: #453744;
@@ -37,12 +38,26 @@ footer {
   position: fixed;
 }
 
+aside.right {
+  right: 0;
+  top: $top + 1;
+  width: $right;
+  height: 100%;
+}
+
+.user-profile {
+  margin-left: 10px;
+}
+
 header {
   top: 0;
+  z-index: 3;
   height: $top;
-  margin-left: $aside;
+  margin-left: $left;
   background: white;
   width: 100%;
+  border-bottom: solid grey 1px;
+  border-bottom: 1px solid #e8e8e8;
   h1 {
     padding: 0 $padding + 4px; // padding only on left and right side.
     margin: 0;
@@ -71,7 +86,7 @@ header {
   display: none;
 }
 
-aside li a,
+aside.left li a,
 header h1 {
   @include channel();
 }
@@ -111,9 +126,9 @@ header h1 {
   }
 }
 
-aside {
+aside.left {
   top: $top;
-  width: $aside;
+  width: $left;
   background: $primary;
   height: calc(100% - 53px);
   padding: $padding;
@@ -164,7 +179,7 @@ aside {
     top: 0;
     background: darken($primary, 5%);
     border-bottom: solid 2px darken($primary, 10%);
-    width: $aside;
+    width: $left;
     margin-left: -$padding;
     padding-left: $padding;
     text-shadow: none;
@@ -216,8 +231,12 @@ aside {
 article {
   padding: $padding $padding*4/3;
   margin-top: 53px;
-  height: calc(100% - 53px);
-  margin-left: $aside;
+  height: calc(100% - 249px);
+  width: calc(100% - 483px);
+  position: fixed;
+  overflow-y: scroll;
+  margin-left: $left;
+  margin-right: $right;
   .message {
     font-size: 15px;
     color: $secondary;
@@ -285,7 +304,8 @@ article {
 footer {
   position: fixed;
   bottom: 0;
-  margin-left: $aside;
+  margin-left: $left;
+  margin-right: $right;
   padding: $padding $padding*4/3-3px;
   background: white;
   z-index: 1;

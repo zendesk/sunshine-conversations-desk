@@ -1,5 +1,5 @@
 <template name="home">
-  {{#contentFor 'aside'}}
+  {{#contentFor 'left'}}
   <div class="team">
     <span class="title">Smooch Demo </span><a class="settings" href="/settings"><i class="fa fa-cog"></i></a>
   </div>
@@ -16,6 +16,12 @@
     <img src="{{avatar}}" class="avatar">
     {{/if}}
     {{> loginButtons}}
+  </div>
+  {{/contentFor}}
+
+  {{#contentFor 'right'}}
+  <div class="user-profile">
+    <h1>User Details:</h1>
   </div>
   {{/contentFor}}
 </template>
