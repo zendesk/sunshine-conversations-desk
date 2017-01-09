@@ -1,0 +1,44 @@
+<template name="settings">
+  {{#contentFor 'header'}}
+  <h1>Integrations</h1>
+  {{/contentFor}}
+  {{> home}}
+
+  {{#if available}}
+    <ul>
+    {{#each integrationForms}}
+    <li>
+      <div class="title">{{name}}</div>
+      {{#if integrated}}
+        {{> deleteIntegration}}
+      {{else}}
+        {{> createIntegration}}
+      {{/if}}
+    </li>
+    {{/each}}
+    </ul>
+  {{else}}
+    <h1>An account scope key is required for managing integrations</h1>
+  {{/if}}
+</template>
+
+<template name="createIntegration">
+  <div class="not-integrated">Not yet integrated</div>
+  <form class="create-integration">
+  {{#each fields}}
+    <label for="{{key}}">{{name}}</label>
+    <input type="text" name="{{key}}" value="{{value}}"/>
+  {{/each}}
+  <input type="hidden" name="type" value="{{type}}"/>
+  <input type="submit" value="Create"/>
+  </form>
+</template>
+
+<template name="deleteIntegration">
+  <div class="integrated"><i class="fa fa-check-circle-o"></i> Integrated</div>
+  <form class="delete-integration">
+  <input type="hidden" name="type" value="{{type}}"/>
+  <input type="hidden" name="integrationId" value="{{integrationId}}"/>
+  <input type="submit" value="Remove"/>
+  </form>
+</template>
