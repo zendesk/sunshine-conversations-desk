@@ -1,0 +1,64 @@
+<template name="profile">
+  <div class="profile">
+    <div class="section">
+      <div class="title">Profile</div>
+      <img src={{appUser.avatarUrl}} />
+      <ul>
+        <li>
+          <span class="label">Id:</span><span>{{channel.userId}}</span>
+        </li>
+        <li>
+          <span class="label">Name:</span><span>{{appUser.fullName}}</span>
+        </li>
+        <li>
+          <span class="label">Email:</span><span>{{appUser.email}}</span>
+        </li>
+        <li>
+          <span class="label">Signed up:</span><span title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="title">Clients</div>
+      {{#each appUser.clients}}
+        {{> client}}
+      {{/each}}
+    </div>
+
+    <div class="section">
+      <div class="title">Custom Properties</div>
+      <ul>
+        <li>
+          <span class="label">Id:</span><span>{{channel.userId}}</span>
+        </li>
+        <li>
+          <span class="label">Name:</span><span>{{appUser.fullName}}</span>
+        </li>
+        <li>
+          <span class="label">Signed up:</span><span title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<template name="client">
+  <div class="client">
+    <div class="title">{{capitalize platform}}</div>
+    <ul>
+      <li>
+        <span class="label">Id:</span><span>{{id}}</span>
+      </li>
+      <li>
+        <span class="label">Display name:</span><span>{{displayName}}</span>
+      </li>
+      <li>
+        <span class="label">Last seen:</span><span title="{{formatDate lastSeen}}">{{fromNow lastSeen}}</span>
+      </li>
+      <li>
+        <span class="label">Linked:</span><span title="{{formatDate linkedAt}}">{{fromNow linkedAt}}</span>
+      </li>
+    </ul>
+  </div>
+</template>
