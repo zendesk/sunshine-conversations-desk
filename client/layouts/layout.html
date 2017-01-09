@@ -3,13 +3,17 @@
     {{> yield "header"}}
   </header>
 
-  <aside>
-    {{> yield "aside"}}
+  <aside class="left">
+    {{> yield "left"}}
   </aside>
 
   <article>
     {{> yield}}
   </article>
+
+  <aside class="right">
+    {{> yield "right"}}
+  </aside>
 
   <footer>
     {{> yield "footer"}}
