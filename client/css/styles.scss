@@ -1,5 +1,5 @@
 $left: 220px;
-$right: 220px;
+$right: 300px;
 $top: 53px;
 
 $primary: #453744;
@@ -43,10 +43,62 @@ aside.right {
   top: $top + 1;
   width: $right;
   height: 100%;
-}
+  overflow-y: scroll;
+  margin-bottom: 40px;
 
-.user-profile {
-  margin-left: 10px;
+  .profile {
+    margin: 10px;
+    word-break: break-all;
+    padding-bottom: 40px;
+  }
+
+  .profile-detail {
+    margin-top: 10px;
+    clear: both;
+  }
+
+  .warning {
+    color: red;
+  }
+
+  .section {
+    margin-bottom: 20px;
+  }
+
+  .section > .title {
+    font-weight: bold;
+    font-size: 1.4em;
+    line-height: 35px;
+  }
+
+  .client {
+    border-top: 1px solid rgba(0,0,0,.09);
+    border-right: 1px solid rgba(0,0,0,.1);
+    border-left: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    border-radius: .375rem;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .client > .title {
+    font-weight: bold;
+    font-size: 1.17em;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .client .primary {
+    font-size: 12px;
+    color: green;
+    float: right;
+    text-transform: uppercase;
+  }
+
+  .label {
+    font-weight: bold;
+    padding-right: 10px;
+  }
+
 }
 
 header {
@@ -56,7 +108,6 @@ header {
   margin-left: $left;
   background: white;
   width: 100%;
-  border-bottom: solid grey 1px;
   border-bottom: 1px solid #e8e8e8;
   h1 {
     padding: 0 $padding + 4px; // padding only on left and right side.
@@ -232,7 +283,7 @@ article {
   padding: $padding $padding*4/3;
   margin-top: 53px;
   height: calc(100% - 249px);
-  width: calc(100% - 483px);
+  width: calc(100% - (263px + 300px));
   position: fixed;
   overflow-y: scroll;
   margin-left: $left;
@@ -304,11 +355,13 @@ article {
 footer {
   position: fixed;
   bottom: 0;
+  width: calc(100% - (257px + 300px));
   margin-left: $left;
   margin-right: $right;
   padding: $padding $padding*4/3-3px;
   background: white;
   z-index: 1;
+  border-top: 1px solid #e8e8e8;
   textarea {
     border: solid 2px lightgray;
     border-radius: 4px;

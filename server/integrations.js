@@ -1,21 +1,26 @@
 const appId = Meteor.settings.smoochAppId
 
+function checkScope() {
+  if (SmoochApi.scope !== 'account') {
+    throw new Meteor.Error('unauthorized', 'account scope required')
+  }
+}
+
 Meteor.methods({
   getIntegrations: () => {
-    if (SmoochApi.scope !== 'account') {
-      throw new Meteor.Error('unauthorized', 'account scope required')
-    }
-
+    checkScope();
     return SmoochApi.integrations.list(appId).then((res) => {
       return res.integrations;
     });
   },
 
   createIntegration: (integration) => {
+    checkScope();
     return SmoochApi.integrations.create(appId, integration);
   },
 
   deleteIntegration: (integrationId) => {
+    checkScope();
     return SmoochApi.integrations.delete(appId, integrationId);
   }
 });

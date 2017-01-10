@@ -1,0 +1,86 @@
+<template name="profile">
+  <div class="profile">
+    <div class="section">
+      <img class="avatar" src={{appUser.avatarUrl}} />
+      <span class="title">{{channel.name}}</span>
+      <ul class="profile-detail">
+        <li>
+          <span class="label">Id:</span><span>{{channel.userId}}</span>
+        </li>
+        <li>
+          <span class="label">Email:</span><span>{{appUser.email}}</span>
+        </li>
+        <li>
+          <span class="label">Signed up:</span><span title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="title">Clients</div>
+      {{#if clients.length}}
+        {{#each clients}}
+          {{> client}}
+        {{/each}}
+      {{else}}
+        <span class="warning">This user has no clients attached, and no way to receive your messages!</span>
+      {{/if}}
+    </div>
+
+    {{#if customProperties.length}}
+    <div class="section">
+      <div class="title">Properties</div>
+      <ul>
+        {{#each customProperties}}
+          {{#if string}}
+          <li>
+            <span class="label">{{key}}</span><span>{{string}}</span>
+          </li>
+          {{/if}}
+          {{#if date}}
+          <li>
+            <span class="label">{{key}}</span><span title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
+          </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="client">
+  <div class="client">
+    <div class="title">{{decamel platform}} {{#if primary}}<span class="primary">most recent</span>{{/if}}</div>
+      <ul>
+        <li>
+          <span class="label">Id:</span><span>{{id}}</span>
+        </li>
+        {{#if displayName}}
+        <li>
+          <span class="label">Display Name:</span><span>{{displayName}}</span>
+        </li>
+        {{/if}}
+        <li>
+          <span class="label">Last seen:</span><span title="{{formatDate lastSeen}}">{{fromNow lastSeen}}</span>
+        </li>
+        {{#if linkedAt}}
+        <li>
+          <span class="label">Linked:</span><span title="{{formatDate linkedAt}}">{{fromNow linkedAt}}</span>
+        </li>
+        {{/if}}
+        {{#each props}}
+          {{#if string}}
+          <li>
+            <span class="label">{{decamel key}}</span><span>{{string}}</span>
+          </li>
+          {{/if}}
+          {{#if date}}
+          <li>
+            <span class="label">{{decamel key}}</span><span title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
+          </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+  </div>
+</template>

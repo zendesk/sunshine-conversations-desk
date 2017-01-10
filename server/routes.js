@@ -1,8 +1,13 @@
-function fullName(appUser) {
+function fullName (appUser) {
   if (!appUser) {
     return 'Anonymous'
   }
-  return [appUser.givenName, appUser.surname].filter((p) => p).join(' ')
+
+  let fullName = [appUser.givenName, appUser.surname].filter((p) => p).join(' ');
+  if (!fullName) {
+    fullName = appUser.email || `Anonymous User ${Math.floor(Math.random() * 10000)}`
+  }
+  return fullName;
 }
 
 function findChannel (body) {
@@ -52,14 +57,19 @@ Router.map(function () {
     path: '/hook',
     where: 'server',
     action: function () {
-
-      console.log('Hook called.');
-      console.log('Headers: ', this.request.headers);
-      console.log('Data: ', this.request.body);
-
       const body = this.request.body;
       const trigger = body.trigger;
       let channel = findChannel(body)
+
+      if (channel && body.appUser) {
+        Channels.update({
+          _id: channel._id
+        }, {
+          $set: {
+            name: fullName(body.appUser)
+          }
+        });
+      }
 
       switch (trigger) {
         case 'message:appUser':
@@ -78,7 +88,6 @@ Router.map(function () {
           if (!channel) {
             break;
           }
-          console.log('trigger postback');
           body.postbacks.forEach(function (pb) {
             const pbMessage = 'Postback ' + pb.action.text + ' | Payload: ' + pb.action.payload;
             Messages.insert({
