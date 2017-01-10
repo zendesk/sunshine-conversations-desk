@@ -5,16 +5,7 @@
 
   <ul>
     {{#each messages}}
-    {{#if date}}
-    <h2>{{date}}</h2>
-    {{/if}}
-    <li>
-      <img src="{{avatarUrl}}" class="avatar">
-      <div class="message-body">
-        <div><span class="username">{{userName}}</span> <span class="time">{{time}}</span></div>
-        <div class="message">{{#markdown}}{{{message}}}{{/markdown}}</div>
-      </div>
-    </li>
+    {{> message}}
     {{/each}}
   </ul>
 
@@ -37,4 +28,17 @@
     <button class="btn_quickreply">Quick Replies</button>
     <button class="btn_carousel">Carousel</button>
   </form>
+</template>
+
+<template name="message">
+  {{#if date}}
+  <h2>{{date}}</h2>
+  {{/if}}
+  <li>
+    <img src="{{avatarUrl}}" class="avatar">
+    <div class="message-body">
+      <div><span class="username">{{userName}}</span> <span class="time">{{time}}</span></div>
+      <div class="message">{{#markdown}}{{{message}}}{{/markdown}}</div>
+    </div>
+  </li>
 </template>

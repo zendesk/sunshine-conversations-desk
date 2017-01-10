@@ -37,8 +37,26 @@ Template.channel.helpers({
     });
   },
 
-  time: function () {
-    return moment(this.timestamp).format('h:mm a');
+  avatar: function () {
+    var user = Meteor.users.findOne({
+      _id: this._userId
+    });
+    if (user && user.emails) {
+      return Gravatar.imageUrl(user.emails[0].address);
+    }
+  }
+});
+
+Template.message.helpers({
+  avatarUrl: function() {
+    if (this.role === 'appUser') {
+      const appUser = Session.get('appUser')
+      if (appUser) {
+        return appUser.avatarUrl;
+      }
+    } else {
+      return this.avatarUrl
+    }
   },
 
   date: function () {
@@ -49,13 +67,8 @@ Template.channel.helpers({
     }
   },
 
-  avatar: function () {
-    var user = Meteor.users.findOne({
-      _id: this._userId
-    });
-    if (user && user.emails) {
-      return Gravatar.imageUrl(user.emails[0].address);
-    }
+  time: function () {
+    return moment(this.timestamp).format('h:mm a');
   }
 });
 

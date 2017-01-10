@@ -51,13 +51,7 @@ Template.profile.helpers({
   },
 
   appUser: function () {
-    const u = Session.get('appUser')
-    if (u) {
-      u.fullName = [u.givenName, u.surname].filter((p) => p).join(' ')
-      u.fullName = u.fullName || 'Anonymous'
-      u.avatarUrl = 'https://www.gravatar.com/avatar/868cb513d5be9180697d8ba5c59d99d1.png?s=100&d=mm&t=1483999865666'
-      return u
-    }
+    return Session.get('appUser')
   },
 
   clients: function() {
