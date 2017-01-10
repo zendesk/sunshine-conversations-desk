@@ -43,16 +43,32 @@ aside.right {
   top: $top + 1;
   width: $right;
   height: 100%;
+  overflow-y: scroll;
+  margin-bottom: 40px;
+
+  .profile {
+    margin: 10px;
+    word-break: break-all;
+    padding-bottom: 40px;
+  }
+
+  .profile-detail {
+    margin-top: 10px;
+    clear: both;
+  }
+
+  .warning {
+    color: red;
+  }
 
   .section {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .section > .title {
     font-weight: bold;
     font-size: 1.4em;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    line-height: 35px;
   }
 
   .client {
@@ -62,8 +78,7 @@ aside.right {
     border-bottom: 1px solid rgba(0,0,0,.12);
     border-radius: .375rem;
     padding: 10px;
-    li {
-    }
+    margin-bottom: 10px;
   }
   .client > .title {
     font-weight: bold;
@@ -72,16 +87,18 @@ aside.right {
     margin-bottom: 10px;
   }
 
+  .client .primary {
+    font-size: 12px;
+    color: green;
+    float: right;
+    text-transform: uppercase;
+  }
+
   .label {
     font-weight: bold;
     padding-right: 10px;
   }
 
-}
-
-.profile {
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 header {
