@@ -115,8 +115,9 @@ Template.messageForm.events({
       'padding-bottom': $('footer').outerHeight()
     });
   },
-  'click button.btn_link': function (event, instance) {
+  'click a.btn_link': function (event, instance) {
     event.preventDefault();
+    Dropdowns.hideAll()
     console.log('Sending link...');
 
     var _id = Router.current().params._id;
@@ -156,9 +157,10 @@ Template.messageForm.events({
       }
     });
   },
-  'click button.btn_postback': function (event, instance) {
+  'click a.btn_postback': function (event, instance) {
     event.preventDefault();
     console.log('Sending postback...');
+    Dropdowns.hideAll()
 
     var _id = Router.current().params._id;
     var chan = Channels.findOne({
@@ -197,9 +199,10 @@ Template.messageForm.events({
       }
     });
   },
-  'click button.btn_carousel': function (event, instance) {
+  'click a.btn_carousel': function (event, instance) {
     event.preventDefault();
     console.log('Sending link...');
+    Dropdowns.hideAll()
 
     var _id = Router.current().params._id;
     var chan = Channels.findOne({
@@ -290,9 +293,10 @@ Template.messageForm.events({
       }
     });
   },
-  'click button.btn_quickreply': function (event, instance) {
+  'click a.btn_quickreply': function (event, instance) {
     event.preventDefault();
     console.log('Sending link...');
+    Dropdowns.hideAll()
 
     var _id = Router.current().params._id;
     var chan = Channels.findOne({
