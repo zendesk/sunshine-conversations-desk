@@ -38,7 +38,10 @@
     <img src="{{avatarUrl}}" class="avatar">
     <div class="message-body">
       <div><span class="username">{{userName}}</span> <span class="time">{{time}}</span></div>
-      <div class="message">{{#markdown}}{{{message}}}{{/markdown}}</div>
+      <div class="message">
+        {{#if imageUrl}}<img alt="image message" src="{{imageUrl}}">{{/if}}
+        {{#markdown}}{{{message}}}{{/markdown}}
+      </div>
     </div>
   </li>
 </template>
