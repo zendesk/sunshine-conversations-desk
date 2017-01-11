@@ -21,12 +21,22 @@
 </template>
 
 <template name="messageForm">
-  <form>
+  <form class="message-form">
+    {{#dropdownTrigger name="chatOptions" }}
+    <div class="dropup"><i class="fa fa-plus"></i></div>
+    {{/dropdownTrigger}}
+
+    {{#dropdown name="chatOptions" left="73" top="-4" direction="n" animation="appear"}}
+    <div class="menu">
+      <ul>
+        <li><a class="btn_link">Send Link Button</a></li>
+        <li><a class="btn_postback">Send Postback Button</a></li>
+        <li><a class="btn_quickreply">Send Quick Reply</a></li>
+        <li><a class="btn_carousel">Send Carousel</a></li>
+      </ul>
+    </div>
+    {{/dropdown}}
     <textarea rows="1" cols="100"></textarea>
-    <button class="btn_link">Link Button</button>
-    <button class="btn_postback">Postbacks</button>
-    <button class="btn_quickreply">Quick Replies</button>
-    <button class="btn_carousel">Carousel</button>
   </form>
 </template>
 
