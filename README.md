@@ -50,3 +50,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 MA  02110-1301, USA.
 
 -------
+
+Comment:
+```
+find server -type f -name '*.js' -print0 | xargs -0 sed -i '' 's/\/\*\* \*\//\/\*\* \*\/\/\*/g'
+```
+
+Uncomment:
+```
+find server -type f -name '*.js' -print0 | xargs -0 sed -i '' 's/\/\*\* \*\/\/\*/\/\*\* \*\//g'
+```

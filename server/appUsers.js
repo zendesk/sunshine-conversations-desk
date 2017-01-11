@@ -16,7 +16,8 @@ function resolveAvatarUrl(appUser) {
 
 Meteor.methods({
   getUser: (userId) => {
-    /* */// 5. Get user profile
+    // 3. Get user profile
+    /** */
     return SmoochApi.appUsers.get({
       appId: Meteor.settings.smoochAppId,
       userId

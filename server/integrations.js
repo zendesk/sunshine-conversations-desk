@@ -1,4 +1,5 @@
-/* */// 7. Configure integrations
+// 5. Configure integrations
+/** */
 const appId = Meteor.settings.smoochAppId
 
 function checkScope() {

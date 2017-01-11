@@ -1,4 +1,3 @@
-/* */// 2. Connect to Smooch API
 var smooch = require('smooch-core');
 
 var prefix = Meteor.settings.smoochKeyId.split('_')
@@ -16,4 +15,3 @@ SmoochApi = new smooch({
   secret: Meteor.settings.smoochSecret,
   scope
 })
-/* */

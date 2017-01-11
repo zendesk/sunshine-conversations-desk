@@ -1,4 +1,5 @@
-/* */// 3. Send messages
+// 2. Send messages
+/** */
 Meteor.methods({
   'sendMessage'({destUserId, msg, role, actions, items, name, email, mediaUrl}) {
     var msgData = {

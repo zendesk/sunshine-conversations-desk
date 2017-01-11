@@ -62,25 +62,22 @@ Router.map(function () {
       let channel = findChannel(body)
 
       switch (trigger) {
-        /* */// 1. Receve user messages
+        // 1. Receve user messages
+        /** */
         case 'message:appUser':
           if (!channel) {
             channel = createChannel(body)
           }
           addMessages(channel, body.messages, fullName(body.appUser))
           break;
-        /* */
 
-        /* */// 4. Receive agent messages
         case 'message:appMaker':
           if (!channel) {
             break;
           }
           addMessages(channel, body.messages)
           break;
-        /* */
 
-        /* */// 6. Receive agent messages
         case 'postback':
           if (!channel) {
             break;
