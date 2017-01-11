@@ -1,5 +1,3 @@
-const appId = Meteor.settings.smoochAppId
-
 function resolveAvatarUrl(appUser) {
   let avatarUrl
   appUser.clients.forEach((client) => {
@@ -18,16 +16,18 @@ function resolveAvatarUrl(appUser) {
 
 Meteor.methods({
   getUser: (userId) => {
+    /* */// 5. Get user profile
     return SmoochApi.appUsers.get({
-      appId,
+      appId: Meteor.settings.smoochAppId,
       userId
-    }).then((res) => {
-      return Object.assign(res.appUser, {
+    }).then(({appUser}) => {
+      return Object.assign(appUser, {
         avatarUrl: resolveAvatarUrl(res.appUser)
       });
     }).catch((err) => {
       console.error(`User with id ${userId} not found`);
     });
+    /* */
   }
 });
 

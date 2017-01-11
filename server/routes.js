@@ -61,29 +61,26 @@ Router.map(function () {
       const trigger = body.trigger;
       let channel = findChannel(body)
 
-      if (channel && body.appUser) {
-        Channels.update({
-          _id: channel._id
-        }, {
-          $set: {
-            name: fullName(body.appUser)
-          }
-        });
-      }
-
       switch (trigger) {
+        /* */// 1. Receve user messages
         case 'message:appUser':
           if (!channel) {
             channel = createChannel(body)
           }
           addMessages(channel, body.messages, fullName(body.appUser))
           break;
+        /* */
+
+        /* */// 4. Receive agent messages
         case 'message:appMaker':
           if (!channel) {
             break;
           }
           addMessages(channel, body.messages)
           break;
+        /* */
+
+        /* */// 6. Receive agent messages
         case 'postback':
           if (!channel) {
             break;
@@ -98,8 +95,20 @@ Router.map(function () {
             });
           })
           break;
+        /* */
+
         default:
           break;
+      }
+
+      if (channel && body.appUser) {
+        Channels.update({
+          _id: channel._id
+        }, {
+          $set: {
+            name: fullName(body.appUser)
+          }
+        });
       }
 
       this.response.end()
