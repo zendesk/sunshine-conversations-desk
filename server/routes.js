@@ -40,14 +40,14 @@ function addMessages (channel, messages, name) {
   }
 
   messages.forEach(function (msg) {
-    name = name || msg.name || 'Anonymous'
     Messages.insert({
       _channel: channel._id,
       message: msg.text,
-      userName: name,
+      userName: name || msg.name || 'Anonymous',
       timestamp: msg.received,
       role: msg.role,
-      avatarUrl: msg.avatarUrl
+      avatarUrl: msg.avatarUrl,
+      imageUrl: msg.mediaType && msg.mediaType.match('image') && msg.mediaUrl
     });
   });
 }
