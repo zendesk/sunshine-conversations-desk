@@ -283,7 +283,7 @@ aside.left {
 article {
   padding: $padding $padding*4/3;
   margin-top: 53px;
-  height: calc(100% - 249px);
+  height: calc(100% - 139px);
   width: calc(100% - (263px + 300px));
   position: fixed;
   overflow-y: scroll;
@@ -359,10 +359,10 @@ footer {
   width: calc(100% - (257px + 300px));
   margin-left: $left;
   margin-right: $right;
-  padding: $padding $padding*4/3-3px;
+  padding: 0 $padding*4/3-3px;
+  padding: 0px 0px 15px 15px;
   background: white;
   z-index: 1;
-  border-top: 1px solid #e8e8e8;
 
   .message-form {
     .dropup {
