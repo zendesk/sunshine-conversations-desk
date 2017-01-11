@@ -27,11 +27,44 @@
   <li>
     <img src="{{avatarUrl}}" class="avatar">
     <div class="message-body">
-      <div><span class="username">{{userName}}</span> <span class="time">{{time}}</span></div>
+      <div><span class="username">{{name}}</span> <span class="time">{{time}}</span></div>
       <div class="message">
-        {{#if imageUrl}}<img alt="image message" src="{{imageUrl}}">{{/if}}
-        {{#markdown}}{{{message}}}{{/markdown}}
+        {{#if items}}
+          Sent a carousel:
+          {{#each items}}
+          <ul>
+            <li>{{> messageItem}}</li>
+          </ul>
+          {{/each}}
+        {{else}}
+          {{#if imageUrl}}<img alt="image message" src="{{imageUrl}}">{{/if}}
+          {{#markdown}}{{{text}}}{{/markdown}}
+          {{#each actions}}
+          <ul>
+            <li>{{> messageAction}}</li>
+          </ul>
+          {{/each}}
+        {{/if}}
       </div>
     </div>
   </li>
 </template>
+
+<template name="messageAction">
+  <div class="message-action"><span class="text">{{text}}</span><span class="type">({{type}})</span></div>
+</template>
+
+<template name="messageItem">
+  <div class="message-carousel">
+    <div>{{title}}</div>
+    <!-- {{#if mediaUrl}}-->
+    <img src="{{mediaUrl}}" />
+    <!-- {{/if}}-->
+    {{#each actions}}
+    <ul>
+      <li>{{> messageAction}}</li>
+    </ul>
+    {{/each}}
+  </div>
+</template>
+

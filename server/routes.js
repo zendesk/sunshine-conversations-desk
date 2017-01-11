@@ -39,16 +39,11 @@ function addMessages (conversation, messages, name) {
     return
   }
 
-  messages.forEach(function (msg) {
-    Messages.insert({
+  messages.forEach(function (m) {
+    Messages.insert(Object.assign({}, m, {
       conversationId: conversation._id,
-      message: msg.text,
-      userName: name || msg.name || 'Anonymous',
-      timestamp: msg.received,
-      role: msg.role,
-      avatarUrl: msg.avatarUrl,
-      imageUrl: msg.mediaType && msg.mediaType.match('image') && msg.mediaUrl
-    });
+      name: name || m.name || 'Anonymous'
+    }));
   });
 }
 
@@ -86,7 +81,7 @@ Router.map(function () {
             Messages.insert({
               conversationId: conv._id,
               message: pbMessage,
-              userName: fullName(body.appUser),
+              name: fullName(body.appUser),
               role: 'appUser'
             });
           })

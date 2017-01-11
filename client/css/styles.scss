@@ -296,6 +296,33 @@ article {
     float: left;
   }
 
+  .message-action {
+    .text {
+      border-radius: 6px;
+      padding: 2px 10px 2px 10px;
+      margin-right: 10px;
+      background: #b9b9b9;
+      color: white;
+    }
+
+    .type {
+      color: #b9b9b9;
+    }
+  }
+  
+  .message-carousel {
+    display: inline-block;
+    border-top: 1px solid rgba(0, 0, 0, 0.09);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: .375rem;
+    padding: 10px;
+    img {
+      height: 100px; 
+    }
+  }
+
   .title {
     font-size: 24px;
   }
