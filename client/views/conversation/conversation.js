@@ -1,32 +1,32 @@
-Template.channel.onCreated(function () {
+Template.conversation.onCreated(function () {
   var instance = this;
   // Listen for changes to reactive variables (such as Router.current()).
   instance.autorun(function () {
-    var channel = Router.current().params._id;
-    var sub = instance.subscribe('messages', channel);
+    var conversation = Router.current().params._id;
+    var sub = instance.subscribe('messages', conversation);
     if (sub.ready()) {
       window.scrollTo(0, document.body.scrollHeight);
     }
   });
 });
 
-Template.channel.onRendered(function () {
+Template.conversation.onRendered(function () {
   $('article').css({
     'padding-bottom': $('footer').outerHeight()
   });
 });
 
-Template.channel.helpers({
+Template.conversation.helpers({
   messages: function () {
     var _id = Router.current().params._id;
     return Messages.find({
-      _channel: _id
+      conversationId: _id
     });
   },
 
-  channel: function () {
+  conversation: function () {
     var _id = Router.current().params._id;
-    return Channels.findOne({
+    return Conversations.findOne({
       _id: _id
     });
   },

@@ -1,22 +1,3 @@
-function sendMessage (message) {
-  const channel = Channels.findOne({
-    _id: Router.current().params._id
-  });
-  const user = Meteor.user();
-
-  const messageBody = Object.assign({
-    role: 'appMaker',
-    name: user.username,
-    email: user.emails[0].address,
-  }, message);
-
-  Meteor.call('sendMessage', channel.userId, messageBody, (err) => {
-    if (err) {
-      alert(err);
-    }
-  });
-}
-
 Template.messageForm.events({
   'keydown textarea': function sendText (event, instance) {
     if (event.keyCode == 13 && !event.shiftKey) { // Check if enter was pressed (but without shift).

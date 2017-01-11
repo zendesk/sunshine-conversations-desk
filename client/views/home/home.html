@@ -4,10 +4,9 @@
     <span class="title">Smooch Demo </span><a class="settings" href="/settings"><i class="fa fa-cog"></i></a>
   </div>
 
-  {{> channelForm}}
   <ul>
-    {{#each channels}}
-    <li class="{{active}}"><a href="/channel/{{_id}}">{{name}}</a></li>
+    {{#each conversations}}
+    <li class="{{active}}"><a href="/conversation/{{_id}}">{{name}}</a></li>
     {{/each}}
   </ul>
 
@@ -18,10 +17,4 @@
     {{> loginButtons}}
   </div>
   {{/contentFor}}
-</template>
-
-<template name="channelForm">
-  <form>
-    <label for="name">Conversations</label>
-  </form>
 </template>

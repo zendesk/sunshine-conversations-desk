@@ -8,7 +8,7 @@ $accent: #4C9689;
 
 $padding: 16px;
 
-@mixin channel() {
+@mixin conversation() {
   &:before {
     color: lighten(desaturate($primary, 30%), 30%);
     font-weight: normal;
@@ -139,7 +139,7 @@ header {
 
 aside.left li a,
 header h1 {
-  @include channel();
+  @include conversation();
 }
 
 .icon-plus {
@@ -156,27 +156,6 @@ header h1 {
     left: -5px;
   }
 }
-
-.add-channel-form {
-  padding: $padding/2 0;
-  input[type="text"] {
-    background: none;
-    border: solid 2px lighten($primary, 30%);
-    border-radius: 4px;
-    padding: 4px;
-    box-sizing: border-box;
-    color: lighten($primary, 40%);
-    font-weight: 300;
-    font-size: 15px;
-    text-shadow: none;
-    display: block;
-    width: 100%;
-    &:focus {
-      outline: none;
-    }
-  }
-}
-
 
 aside.left {
   top: $top;

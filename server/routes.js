@@ -10,38 +10,38 @@ function fullName (appUser) {
   return fullName;
 }
 
-function findChannel (body) {
+function findConversation (body) {
   const appUser = body.appUser;
   if (!appUser) {
     return;
   }
 
-  return Channels.findOne({
+  return Conversations.findOne({
     userId: appUser._id
   });
 }
 
-function createChannel (body) {
+function createConversation (body) {
   const appUser = body.appUser;
-  let channel = findChannel(body)
-  if (!channel) {
-    channel = {};
-    channel._id = Channels.insert({
+  let conv = findConversation(body)
+  if (!conv) {
+    conv = {};
+    conv._id = Conversations.insert({
       name: fullName(appUser),
       userId: appUser._id
     });
-    return channel;
+    return conv;
   }
 }
 
-function addMessages (channel, messages, name) {
+function addMessages (conversation, messages, name) {
   if (!messages) {
     return
   }
 
   messages.forEach(function (msg) {
     Messages.insert({
-      _channel: channel._id,
+      conversationId: conversation._id,
       message: msg.text,
       userName: name || msg.name || 'Anonymous',
       timestamp: msg.received,
@@ -59,33 +59,33 @@ Router.map(function () {
     action: function () {
       const body = this.request.body;
       const trigger = body.trigger;
-      let channel = findChannel(body)
+      let conv = findConversation(body)
 
       switch (trigger) {
         // 1. Receve user messages
         /** */
         case 'message:appUser':
-          if (!channel) {
-            channel = createChannel(body)
+          if (!conv) {
+            conv = createConversation(body)
           }
-          addMessages(channel, body.messages, fullName(body.appUser))
+          addMessages(conv, body.messages, fullName(body.appUser))
           break;
 
         case 'message:appMaker':
-          if (!channel) {
+          if (!conv) {
             break;
           }
-          addMessages(channel, body.messages)
+          addMessages(conv, body.messages)
           break;
 
         case 'postback':
-          if (!channel) {
+          if (!conv) {
             break;
           }
           body.postbacks.forEach(function (pb) {
             const pbMessage = 'Postback ' + pb.action.text + ' | Payload: ' + pb.action.payload;
             Messages.insert({
-              _channel: channel._id,
+              conversationId: conv._id,
               message: pbMessage,
               userName: fullName(body.appUser),
               role: 'appUser'
@@ -98,9 +98,9 @@ Router.map(function () {
           break;
       }
 
-      if (channel && body.appUser) {
-        Channels.update({
-          _id: channel._id
+      if (conv && body.appUser) {
+        Conversations.update({
+          _id: conv._id
         }, {
           $set: {
             name: fullName(body.appUser)

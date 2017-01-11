@@ -1,7 +1,7 @@
 Message = {}
 
 function sendMessage (message) {
-  const channel = Channels.findOne({
+  const conv = Conversations.findOne({
     _id: Router.current().params._id
   });
   const user = Meteor.user();
@@ -12,7 +12,7 @@ function sendMessage (message) {
     email: user.emails[0].address,
   }, message);
 
-  Meteor.call('sendMessage', channel.userId, messageBody, (err) => {
+  Meteor.call('sendMessage', conv.userId, messageBody, (err) => {
     if (err) {
       alert(err);
     }

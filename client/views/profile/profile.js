@@ -31,14 +31,13 @@ function score(client) {
 }
 
 Template.profile.helpers({
-  channel: function () {
-    var _id = Router.current().params._id;
-    var channel = Channels.findOne({
-      _id: _id
+  conversation: function () {
+    const conv = Conversations.findOne({
+      _id: Router.current().params._id
     });
 
-    if (channel) {
-      Meteor.call('getUser', channel.userId, (err, appUser) => {
+    if (conv) {
+      Meteor.call('getUser', conv.userId, (err, appUser) => {
         if (err) {
           alert(err);
         } else {
@@ -47,7 +46,7 @@ Template.profile.helpers({
       });
     }
 
-    return channel;
+    return conv;
   },
 
   appUser: function () {
