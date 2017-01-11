@@ -47,6 +47,11 @@ Template.channel.helpers({
   }
 });
 
+Template.message.rendered = function() {
+  this.lastNode.lastElementChild.scrollIntoView()
+};
+
+
 Template.message.helpers({
   avatarUrl: function() {
     if (this.role === 'appUser') {
