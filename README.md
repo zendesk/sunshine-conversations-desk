@@ -20,6 +20,8 @@ A sample business system built with Meteor and the Smooch API.
 
 5. Configure your secret keys and appToken
 
+  You'll need a managed account secret key which you can obtain from https://app.smooch.io/account. The key ID should have a `act_` prefix.
+
   Using the _settings.json.example_ file as a guide, create a _settings.json_ file that contains your appToken, secret key, key ID, and appId.
 
 6. Run it:
@@ -50,3 +52,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 MA  02110-1301, USA.
 
 -------
+
+Comment:
+```
+find server client -not \( -path client/compatibility -prune \) -type f -name '*.js' -print0 | xargs -0 sed -i '' 's/\(\/\*\*.*\*\/$\)/\1\/\*/g'
+```
+
+Uncomment:
+```
+find server client -not \( -path client/compatibility -prune \) -type f -name '*.js' -print0 | xargs -0 sed -i '' 's/\(\/\*\*.*\)\/\*$/\1/g'
+```

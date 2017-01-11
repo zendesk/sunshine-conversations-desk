@@ -1,3 +1,4 @@
+/** 5. Configure integrations */
 const appId = Meteor.settings.smoochAppId
 
 function checkScope() {
@@ -24,4 +25,4 @@ Meteor.methods({
     return SmoochApi.integrations.delete(appId, integrationId);
   }
 });
-
+/* */

@@ -1,0 +1,37 @@
+<template name="conversation">
+  {{#contentFor 'header'}}
+  <h1>{{conversation.name}}</h1>
+  {{/contentFor}}
+
+  <ul>
+    {{#each messages}}
+    {{> message}}
+    {{/each}}
+  </ul>
+
+  {{#contentFor 'right'}}
+  {{> profile}}
+  {{/contentFor}}
+
+  {{#contentFor 'footer'}}
+  {{> messageForm}}
+  {{/contentFor}}
+
+  {{> home}}
+</template>
+
+<template name="message">
+  {{#if date}}
+  <h2>{{date}}</h2>
+  {{/if}}
+  <li>
+    <img src="{{avatarUrl}}" class="avatar">
+    <div class="message-body">
+      <div><span class="username">{{userName}}</span> <span class="time">{{time}}</span></div>
+      <div class="message">
+        {{#if imageUrl}}<img alt="image message" src="{{imageUrl}}">{{/if}}
+        {{#markdown}}{{{message}}}{{/markdown}}
+      </div>
+    </div>
+  </li>
+</template>

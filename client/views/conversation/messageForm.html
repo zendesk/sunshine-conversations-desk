@@ -1,0 +1,20 @@
+<template name="messageForm">
+  <form class="message-form">
+    {{#dropdownTrigger name="chatOptions" }}
+    <div class="dropup"><i class="fa fa-plus"></i></div>
+    {{/dropdownTrigger}}
+
+    {{#dropdown name="chatOptions" left="73" top="-4" direction="n" animation="appear"}}
+    <div class="menu">
+      <ul>
+        <li><a class="link">Send Link Button</a></li>
+        <li><a class="quickreply">Send Quick Reply</a></li>
+        <li><a class="carousel">Send Carousel</a></li>
+        <li><a class="postback">Send Postback Button</a></li>
+      </ul>
+    </div>
+    {{/dropdown}}
+    <textarea rows="1" cols="100"></textarea>
+  </form>
+</template>
+
