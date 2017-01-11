@@ -11,7 +11,9 @@ function resolveAvatarUrl(appUser) {
     avatarUrl = `https://www.gravatar.com/avatar/${hash}.png?s=100&d=retro&t=${Date.now()}`
   }
 
-  return avatarUrl;
+  return Object.assign(appUser, {
+    avatarUrl
+  });
 }
 
 Meteor.methods({
@@ -22,11 +24,9 @@ Meteor.methods({
       appId: Meteor.settings.smoochAppId,
       userId
     }).then(({appUser}) => {
-      return Object.assign(appUser, {
-        avatarUrl: resolveAvatarUrl(res.appUser)
-      });
+      return resolveAvatarUrl(appUser);
     }).catch((err) => {
-      console.error(`User with id ${userId} not found`);
+      console.error(`Failed to fetch ${userId}`, err);
     });
     /* */
   }
