@@ -20,17 +20,13 @@ function sendMessage (message) {
 }
 
 Message.sendText = function(text) {
-  // 2. Send messages
-  /** */
   sendMessage({
     text
   });
-  /* */
 }
 
 Message.sendLink = function() {
-  // 4. Structured messages - link buttons
-  /** */
+  /** 4. Structured messages - link buttons */
   sendMessage({
     text: 'Some great websites:',
     actions: [{
@@ -54,8 +50,7 @@ Message.sendLink = function() {
 }
 
 Message.sendQuickReply = function() {
-  // 4. Structured messages - quick replies
-  /** */
+  /** 4. Structured messages - quick replies */
   sendMessage({
     text: 'What do you want to eat for dinner?',
     actions: [{
@@ -74,8 +69,7 @@ Message.sendQuickReply = function() {
 }
 
 Message.sendCarousel = function() {
-  // 4. Structured messages - carousel
-  /** */
+  /** 4. Structured messages - carousel */
   sendMessage({
     items: [{
       'title': 'Big Hat',
@@ -148,8 +142,7 @@ Message.sendCarousel = function() {
 }
 
 Message.sendPostback = function() {
-  // 4. Structured messages - postback
-  /** */
+  /** 4. Structured messages - postback */
   sendMessage({
     text: 'Here are some postbacks:',
     actions: [{

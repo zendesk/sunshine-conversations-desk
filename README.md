@@ -55,10 +55,10 @@ MA  02110-1301, USA.
 
 Comment:
 ```
-find server -type f -name '*.js' -print0 | xargs -0 sed -i '' 's/\/\*\* \*\//\/\*\* \*\/\/\*/g'
+find server client -not \( -path client/compatibility -prune \) -type f -name '*.js' -print0 | xargs -0 sed -i '' 's/\(\/\*\*.*\*\/$\)/\1\/\*/g'
 ```
 
 Uncomment:
 ```
-find server -type f -name '*.js' -print0 | xargs -0 sed -i '' 's/\/\*\* \*\/\/\*/\/\*\* \*\//g'
+find server client -not \( -path client/compatibility -prune \) -type f -name '*.js' -print0 | xargs -0 sed -i '' 's/\(\/\*\*.*\)\/\*$/\1/g'
 ```

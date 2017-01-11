@@ -61,9 +61,8 @@ Router.map(function () {
       const trigger = body.trigger;
       let conv = findConversation(body)
 
+      /** 1. Receve user messages */
       switch (trigger) {
-        // 1. Receve user messages
-        /** */
         case 'message:appUser':
           if (!conv) {
             conv = createConversation(body)
@@ -92,11 +91,10 @@ Router.map(function () {
             });
           })
           break;
-        /* */
-
         default:
           break;
       }
+      /* */
 
       if (conv && body.appUser) {
         Conversations.update({
