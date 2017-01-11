@@ -64,7 +64,7 @@ Template.message.helpers({
   },
 
   date: function () {
-    var dateNow = moment(this.timestamp).calendar();
+    var dateNow = moment(this.received).calendar();
     var instance = Template.instance();
     if (!instance.date || instance.date != dateNow) {
       return instance.date = dateNow;
@@ -72,7 +72,11 @@ Template.message.helpers({
   },
 
   time: function () {
-    return moment(this.timestamp).format('h:mm a');
+    return moment(this.received).format('h:mm a');
+  },
+
+  imageUrl: function() {
+    return this.mediaType && this.mediaType.match('image') && this.mediaUrl
   }
 });
 
