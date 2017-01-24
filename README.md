@@ -24,7 +24,11 @@ A sample business system built with Meteor and the Smooch API.
 
   Using the _settings.json.example_ file as a guide, create a _settings.json_ file that contains your appToken, secret key, key ID, and appId.
 
-6. Run it:
+6. Install the npm modules:
+
+  `meteor npm install`
+
+7. Run it:
 
   `meteor --settings settings.json`
 
