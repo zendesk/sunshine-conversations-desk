@@ -1,4 +1,4 @@
-$left: 220px;
+$left: 300px;
 $right: 300px;
 $top: 53px;
 
@@ -6,7 +6,36 @@ $primary: #453744;
 $secondary: #3D3C40;
 $accent: #4C9689;
 
+
+$light-gray: #f6f7fc;
+$gray: #999;
+$dark-gray: #464a5c;
+$darker-gray: #373352;
+$black: #292548;
+$vivid-violet:#bc64ce;
+$violet:#a347b7;
+$border-color: #e4e8eb;
+
 $padding: 16px;
+
+@font-face {
+    font-family: 'Circular';
+    src: url('https://website.smooch.io/font/CircularStd-Light.eot?#iefix') format('embedded-opentype'),url('https://website.smooch.io/font/CircularStd-Light.woff2') format('woff2'),url('https://website.smooch.io/font/CircularStd-Light.woff') format('woff'),url('https://website.smooch.io/font/CircularStd-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Circular';
+    src: url('https://website.smooch.io/font/CircularStd-Book.eot?#iefix') format('embedded-opentype'),url('https://website.smooch.io/font/CircularStd-Book.woff2') format('woff2'),url('https://website.smooch.io/font/CircularStd-Book.woff') format('woff'),url('https://website.smooch.io/font/CircularStd-Book.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Circular';
+    src: url('https://website.smooch.io/font/CircularStd-Medium.eot?#iefix') format('embedded-opentype'),url('https://website.smooch.io/font/CircularStd-Medium.woff2') format('woff2'),url('https://website.smooch.io/font/CircularStd-Medium.woff') format('woff'),url('https://website.smooch.io/font/CircularStd-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
 
 @mixin conversation() {
   &:before {
@@ -18,9 +47,10 @@ $padding: 16px;
 
 body {
   margin: 0;
-  font-family: Lato, sans-serif;
+  font-family: 'Circular', 'ProximaNova', 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight:300;
   line-height: 1rem;
   color: #555459;
 }
@@ -40,14 +70,16 @@ footer {
 
 aside.right {
   right: 0;
+  background-color: $light-gray;
   top: $top + 1;
   width: $right;
   height: 100%;
+  z-index:4;
   overflow-y: scroll;
   margin-bottom: 40px;
 
   .profile {
-    margin: 10px;
+    margin: 24px;
     word-break: break-all;
     padding-bottom: 40px;
   }
@@ -100,22 +132,39 @@ aside.right {
   }
 
 }
-
+.topbar{
+  position:fixed;
+  top:0;
+  z-index: 5;
+  height: 53px;
+  margin-left: $left;
+  background: $violet;
+  width: calc(100% - 300px);
+  .settings{
+    position: absolute;
+    top: 15px;
+    z-index:6;
+    right: 170px;
+    .fa{
+      font-size:21px;
+    }
+  }
+}
 header {
-  top: 0;
+  top: $top + 1;
   z-index: 3;
   height: $top;
   margin-left: $left;
   background: white;
   width: 100%;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 2px solid $border-color;
   h1 {
     padding: 0 $padding + 4px; // padding only on left and right side.
     margin: 0;
     line-height: 53px;
-    color: $primary;
-    font-size: 24px;
-    font-weight: 900;
+    color: $darker-gray;
+    font-size: 18px;
+    font-weight: 500;
   }
 }
 
@@ -160,25 +209,20 @@ header h1 {
 aside.left {
   top: $top;
   width: $left;
-  background: $primary;
+  background: #fff;
+  border-right:2px solid $border-color;
   height: calc(100% - 53px);
-  padding: $padding;
+  padding: 0;
   box-sizing: border-box;
   z-index: 2;
-  .settings {
-    display: inline;
-    float: right;
-    padding-right: 20px;
-    color: white;
-  }
-  &, a {
-    color: lighten($primary, 30%);
-    text-decoration: none;
-    text-shadow: 1px 1px darken($primary, 5%);
-  }
   a {
     padding: 0;
+    text-decoration:none;
     display: block;
+    color: $dark-gray;
+  }
+  .avatar {
+    width: 50px;
   }
   #login-buttons {
     &, a {
@@ -186,20 +230,22 @@ aside.left {
     }
   }
   ul {
-    margin: $padding/2 0;
+    margin: 0;
+  }
+  ul li{
+    min-height:60px;
+    padding: $padding;
   }
   li a:before {
     color: lighten($primary, 10%);
   }
   .active {
-    background: $accent;
+    background: $border-color;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-    margin-left: -$padding;
-    padding-left: $padding;
     a {
-      color: white;
-      text-shadow: 1px 1px darken($accent, 10%);
+      font-weight:400;
+      text-shadow: none;
       &:before {
         color: lighten($accent, 20%);
       }
@@ -208,16 +254,14 @@ aside.left {
   .team {
     position: fixed;
     top: 0;
-    background: darken($primary, 5%);
-    border-bottom: solid 2px darken($primary, 10%);
+    background: $violet;
     width: $left;
-    margin-left: -$padding;
     padding-left: $padding;
     text-shadow: none;
     line-height: $top;
     height: $top;
     box-sizing: border-box;
-    font-weight: 900;
+    font-weight: 500;
     color: white;
   }
   label {
@@ -229,13 +273,11 @@ aside.left {
 .user {
   position: fixed;
   display: block;
-  width: 220px;
+  top:0;
+  right:0;
+  text-align:right;
   box-sizing: border-box;
-  padding: $padding/2;
-  margin: 0 (-$padding);
-  bottom: 0;
-  background: darken($primary, 5%);
-  border-top: solid 2px darken($primary, 10%);
+  padding: $padding/2 $padding $padding/2 $padding;
   line-height: 35px;
   font-weight: 900;
   a.login-link-text {
@@ -245,36 +287,38 @@ aside.left {
 }
 
 #login-dropdown-list {
-  bottom: 30px;
-  left: 50px;
-  top: initial;
+  top: 34px;
+  left: -165px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   border: none;
 }
 
 .avatar {
   width: 40px;
-  border-radius: 4px;
+  border-radius: 50%;
+  border:1px solid $border-color;
   float: left;
   margin-right: $padding*2/3;
 }
 
 article {
-  padding: $padding $padding*4/3;
-  margin-top: 53px;
-  height: calc(100% - 139px);
-  width: calc(100% - (263px + 300px));
+  padding: $padding*2;
+  margin-top: 106px;
+  height: calc(100% - 178px);
+  width: calc(100% - (300px + 300px));
   position: fixed;
+  box-sizing:border-box;
   overflow-y: scroll;
   margin-left: $left;
   margin-right: $right;
   .message {
-    font-size: 15px;
-    color: $secondary;
+    font-size: 17px;
+    color: $dark-gray;
   }
   .username, h2 {
-    color: darken($primary, 15%);
-    font-weight: 900;
+    color: $darker-gray;
+    font-weight: 500;
+    letter-spacing: -.02em;
   }
   li {
     margin-top: $padding/2;
@@ -362,24 +406,25 @@ article {
 footer {
   position: fixed;
   bottom: 0;
-  width: calc(100% - (257px + 300px));
+  width: calc(100% - (300px + 324px));
   margin-left: $left;
   margin-right: $right;
+  box-sizing: border-box;
   padding: 0 $padding*4/3-3px;
-  padding: 0px 0px 15px 15px;
+  padding: 0px 24px 16px 24px;
   background: white;
   z-index: 1;
 
   .message-form {
     .dropup {
       cursor: pointer;
-      border: solid 2px lightgrey;
-      border-radius: 6px 0 0 6px;
+      border: none;
       position: absolute;
-      width: 38px;
-      height: 26px;
+      width: 46px;
+      height: 46px;
       padding-top: 7px;
       font-size: 20px;
+      line-height:46px;
       text-align: center;
       color: lightgrey;
     }
@@ -402,7 +447,7 @@ footer {
 
       a:hover {
         color: #fff;
-        background: #2d9ee0;
+        background: $violet;
       }
     }
     textarea {
@@ -412,15 +457,22 @@ footer {
 
   textarea {
     padding-left: 50px;
-    border: solid 2px lightgray;
-    border-radius: 6px;
-    padding: $padding/2 $padding/2 $padding/2 50px;
+    border:none;
+    padding: $padding $padding/2 $padding 50px;
     width: 100%;
     box-sizing: border-box;
     resize: none !important;
-    font-size: 14px;
+    font-size: 17px;
+    border-radius:6px;
+    background-color:$light-gray;
+    border:1px solid $light-gray;
+    -webkit-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
     &:focus {
       outline: none;
+      background-color:white;
+      border:1px solid $border-color;
+      box-shadow: 0 6px 18px rgba(63, 49, 178, .08), 0 4px 9px rgba(63, 49, 178, .04);
     }
   }
 }
