@@ -1,6 +1,6 @@
 <template name="conversation">
   {{#contentFor 'header'}}
-  <h1>{{conversation.name}}</h1>
+  <h1><img class="avatar" src={{appUser.avatarUrl}} /> {{conversation.name}}</h1>
   {{/contentFor}}
 
   <ul>

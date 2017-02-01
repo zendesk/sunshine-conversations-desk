@@ -1,20 +1,13 @@
 <template name="home">
   {{#contentFor 'left'}}
   <div class="team">
-    <span class="title">Smooch Demo </span><a class="settings" href="/settings"><i class="fa fa-cog"></i></a>
+    <span class="title">SmoochDesk</span>
   </div>
 
   <ul>
     {{#each conversations}}
-    <li class="{{active}}"><a href="/conversation/{{_id}}">{{name}}</a></li>
+    <li class="{{active}}"><a href="/conversation/{{_id}}"><img class="avatar" src={{avatar}} /> {{name}}</a></li>
     {{/each}}
   </ul>
-
-  <div class="user">
-    {{#if avatar}}
-    <img src="{{avatar}}" class="avatar">
-    {{/if}}
-    {{> loginButtons}}
-  </div>
   {{/contentFor}}
 </template>

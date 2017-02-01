@@ -1,4 +1,14 @@
 <template name="layout">
+  <div class="topbar">
+      <a class="settings" href="/settings"><i class="fa fa-cog"></i></a>
+      <div class="user">
+        {{#if avatar}}
+        <img src="{{avatar}}" class="avatar">
+        {{/if}}
+        {{> loginButtons}}
+    </div>
+  </div>
+
   <header>
     {{> yield "header"}}
   </header>

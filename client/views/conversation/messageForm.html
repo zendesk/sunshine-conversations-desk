@@ -1,7 +1,7 @@
 <template name="messageForm">
   <form class="message-form">
     {{#dropdownTrigger name="chatOptions" }}
-    <div class="dropup"><i class="fa fa-plus"></i></div>
+    <div class="dropup"><i class="fa fa-paperclip"></i></div>
     {{/dropdownTrigger}}
 
     {{#dropdown name="chatOptions" left="73" top="-4" direction="n" animation="appear"}}
@@ -14,7 +14,7 @@
       </ul>
     </div>
     {{/dropdown}}
-    <textarea rows="1" cols="100"></textarea>
+    <textarea rows="1" cols="100" placeholder="Type a message"></textarea>
   </form>
 </template>
 
