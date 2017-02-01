@@ -79,7 +79,7 @@ aside.right {
   margin-bottom: 40px;
 
   .profile {
-    margin: 10px;
+    margin: 24px;
     word-break: break-all;
     padding-bottom: 40px;
   }
@@ -304,7 +304,7 @@ aside.left {
 article {
   padding: $padding*2;
   margin-top: 106px;
-  height: calc(100% - 136px);
+  height: calc(100% - 178px);
   width: calc(100% - (300px + 300px));
   position: fixed;
   box-sizing:border-box;
@@ -458,14 +458,21 @@ footer {
   textarea {
     padding-left: 50px;
     border:none;
-    border-top: solid 2px $border-color;
-    padding: $padding $padding/2 $padding/2 50px;
+    padding: $padding $padding/2 $padding 50px;
     width: 100%;
     box-sizing: border-box;
     resize: none !important;
     font-size: 17px;
+    border-radius:6px;
+    background-color:$light-gray;
+    border:1px solid $light-gray;
+    -webkit-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
     &:focus {
       outline: none;
+      background-color:white;
+      border:1px solid $border-color;
+      box-shadow: 0 6px 18px rgba(63, 49, 178, .08), 0 4px 9px rgba(63, 49, 178, .04);
     }
   }
 }
