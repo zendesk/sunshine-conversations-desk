@@ -5,16 +5,21 @@
   {{> home}}
 
   {{#if available}}
-    <ul>
+    <ul class="settings-container">
     {{#each integrationForms}}
-    <li>
-      <div class="title">{{name}}</div>
+
       {{#if integrated}}
-        {{> deleteIntegration}}
+        <li class="settings-item">
+          <div class="title">{{name}}</div>
+            {{> deleteIntegration}}
+        </li>
       {{else}}
-        {{> createIntegration}}
+        <li class="settings-item not-integrated">
+          <div class="title">{{name}}</div>
+            {{> createIntegration}}
+        </li>
       {{/if}}
-    </li>
+
     {{/each}}
     </ul>
   {{else}}
@@ -35,7 +40,7 @@
 </template>
 
 <template name="deleteIntegration">
-  <div class="integrated"><i class="fa fa-check-circle-o"></i> Integrated</div>
+  <div class="integrated"><i class="fa fa-check-circle"></i> Integrated</div>
   <form class="delete-integration">
   <input type="hidden" name="type" value="{{type}}"/>
   <input type="hidden" name="integrationId" value="{{integrationId}}"/>
