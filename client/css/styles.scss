@@ -372,6 +372,9 @@ article {
       clear: both;
     }
   }
+  li.reply{
+    display:inline-block;
+  }
   p {
     margin:0;
   }
@@ -416,7 +419,16 @@ article {
       color:rgba(0,0,0,0.5);
     }
   }
-  
+  li.reply .message-action{
+     .type{
+      display:none;
+    }
+    .text{
+      margin-right:2px;
+      padding-top:3px;
+      padding-bottom:5px;
+    }
+  }
   .message-carousel {
     width:100%;
     div.img{
@@ -470,11 +482,16 @@ article {
     }
     .carousel-item{
       display:inline-block;
+      margin-right:6px;
       border:1px solid $border-color;
       border-radius: 6px;
       padding: 0;
       background:white;
+      vertical-align: top;
       box-shadow: 0 4px 8px rgba(63, 49, 178, .03), 0 2px 6px rgba(63, 49, 178, .02);
+      &:last-child{
+        margin-right:0;
+      }
     }
   }
 

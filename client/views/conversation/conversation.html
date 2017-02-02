@@ -39,11 +39,13 @@
         {{else}}
           {{#if imageUrl}}<img alt="image message" src="{{imageUrl}}">{{/if}}
           {{#markdown}}{{{text}}}{{/markdown}}
-          {{#each actions}}
+          {{#if actions}}
           <ul>
-            <li>{{> messageAction}}</li>
+            {{#each actions}}
+             {{> messageAction}}
+            {{/each}}
           </ul>
-          {{/each}}
+          {{/if}}
         {{/if}}
       </div>
     </div>
@@ -51,7 +53,11 @@
 </template>
 
 <template name="messageAction">
-  <div class="message-action"><span class="text">{{text}}<span class="type">{{type}}</span></span></div>
+  {{#if typeIsReply}}
+    <li class="reply"><div class="message-action"><span class="text">{{text}}<span class="type">{{type}}</span></span></div></li>
+  {{else}}
+    <li><div class="message-action"><span class="text">{{text}}<span class="type">{{type}}</span></span></div></li>
+  {{/if}}
 </template>
 
 <template name="messageItem">

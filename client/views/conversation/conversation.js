@@ -80,3 +80,8 @@ Template.message.helpers({
   }
 });
 
+Template.messageAction.helpers({
+  typeIsReply: function() {
+    return this.type === 'reply';
+  }
+});
