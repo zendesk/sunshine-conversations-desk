@@ -1,4 +1,5 @@
 <template name="conversation">
+  <article>
   {{#contentFor 'header'}}
   <h1><img class="avatar" src={{appUser.avatarUrl}} /> {{conversation.name}}</h1>
   {{/contentFor}}
@@ -18,6 +19,7 @@
   {{/contentFor}}
 
   {{> home}}
+  </article>
 </template>
 
 <template name="message">

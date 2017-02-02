@@ -77,11 +77,10 @@ aside.right {
   width: $right;
   height: 100%;
   z-index:4;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin-bottom: 40px;
 
   .profile {
-    margin: 10px;
     word-break: break-all;
     padding-bottom: 40px;
   }
@@ -111,7 +110,7 @@ aside.right {
     margin-bottom: 10px;
     &.top-title{
       margin:0;
-      padding: 0 24px 16px 24px;
+      padding: 19px 24px 18px 24px;
       border-bottom:2px solid $border-color;
       margin-bottom:24px;
     }
@@ -158,7 +157,7 @@ aside.right {
   z-index: 5;
   height: 53px;
   margin-left: $left;
-  background: linear-gradient(to right, #6d56a2 0%, #301f6c 100%);
+  background: linear-gradient(to right, #47407d 0%, #332c52 100%);
   width: calc(100% - 300px);
   .settings{
     position: absolute;
@@ -260,6 +259,10 @@ aside.left {
     min-height:60px;
     padding: $padding;
     border-bottom:1px solid $border-color;
+    &:hover{
+      background-color:#fafbff;
+      cursor:pointer;
+    }
   }
   li a:before {
     color: lighten($primary, 10%);
@@ -268,6 +271,9 @@ aside.left {
     background: #eff1f8;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+    &:hover{
+      background: #eff1f8;
+    }
     a {
       font-weight:400;
       text-shadow: none;
@@ -279,7 +285,7 @@ aside.left {
   .team {
     position: fixed;
     top: 0;
-    background: #6d56a2;
+    background: #47407d;
     width: $left;
     padding-left: $padding;
     text-shadow: none;
@@ -288,6 +294,12 @@ aside.left {
     box-sizing: border-box;
     font-weight: 500;
     color: white;
+    img{
+      position:relative;
+      top: 8px;
+      margin-left: 4px;
+      margin-right: 10px;
+    }
   }
   label {
     text-transform: uppercase;
@@ -330,13 +342,17 @@ article {
   padding: $padding $padding*2;
   padding-bottom: 32px !important;
   margin-top: 109px;
-  height: calc(100% - 183px);
+  height: calc(100% - 187px);
   width: calc(100% - (300px + 299px));
   position: fixed;
   box-sizing:border-box;
   overflow-y: scroll;
   margin-left: $left;
   margin-right: $right;
+  &.full-height{
+    padding-bottom:0 !important;
+    height: calc(100% - 109px);
+  }
   .message {
     font-size: 17px;
     background-color: #f6f7fc;
@@ -380,9 +396,10 @@ article {
       text-align:center;
       background-color:$violet;
       color:#fff;
-      font-size:16px;
-      font-weight:400;
-      border-radius:30px;
+      font-size:14px;
+      font-weight:500;
+      border-radius:5px;
+      box-shadow: 0 3px 6px rgba(63, 49, 178, .1), 0 2px 4px rgba(63, 49, 178, .04);
     }
 
     .type {
@@ -395,7 +412,7 @@ article {
       color: #9ba4b3;
       font-size: 10px;
       line-height: 15px;
-      margin-top: -3px;
+      margin-top: -4px;
       color:rgba(0,0,0,0.5);
     }
   }
@@ -404,7 +421,7 @@ article {
     width:100%;
     div.img{
       width:100%;
-      max-width:400px;
+      max-width:360px;
       max-height:200px;
       overflow:hidden;
       border-radius:6px 6px 0 0;
@@ -433,18 +450,22 @@ article {
     }
     .message-action {
       .text {
-        padding: 12px 12px 12px 12px;
+        padding: 10px 12px 10px 12px;
         margin: 0 7px;
         display:block;
         background:transparent;
         color:$violet;
         position:relative;
         text-align:center;
+        font-size:16px;
+        font-weight:400;
         border-top:1px solid $border-color;
         border-radius:0;
+        box-shadow:none;
       }
       .type{
         color:#9ba4b3;
+        margin-top:-2px;
       }
     }
     .carousel-item{
@@ -517,8 +538,8 @@ footer {
   margin-right: $right;
   box-sizing: border-box;
   padding: 0 $padding*4/3-3px;
-  padding: 0px 24px 16px 24px;
-  background: white;
+  padding: 0px 24px 20px 24px;
+  background:transparent;
   z-index: 1;
 
   .message-form {
@@ -528,7 +549,7 @@ footer {
       position: absolute;
       width: 46px;
       height: 46px;
-      padding-top: 7px;
+      padding-top: 5px;
       font-size: 20px;
       line-height:46px;
       text-align: center;
@@ -570,6 +591,7 @@ footer {
   textarea {
     padding-left: 50px;
     border:none;
+    color:$dark-gray;
     height: auto!important;
     padding: $padding $padding/2 $padding 50px;
     width: 100%;
@@ -590,7 +612,8 @@ footer {
       outline: none;
       background-color:white;
       border:2px solid #dae0e4;
-      box-shadow: 0 6px 18px rgba(63, 49, 178, .08), 0 4px 9px rgba(63, 49, 178, .04);
+      border-bottom-color:#d3d9dd;
+      box-shadow: 0 6px 24px rgba(63, 49, 178, .08), 0 4px 12px rgba(63, 49, 178, .04);
       &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
         color:    #9ba4b3;
       }
@@ -624,7 +647,15 @@ input[type=submit] {
     border:none;
     font-weight:400;
     padding: 7px 16px 10px 16px;
+    -webkit-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    cursor:pointer;
     box-shadow: 0 4px 8px rgba(63, 49, 178, .1), 0 2px 6px rgba(63, 49, 178, .04);
+    &:hover{
+      box-shadow: 0 5px 9px rgba(63,49,178,0.10), 0 4px 8px rgba(63,49,178,0.06);
+      -webkit-transform: translateY(-2px);
+      transform: translateY(-2px);
+    }
 }
 /* Let's get this party started */
 ::-webkit-scrollbar {
@@ -651,12 +682,24 @@ input[type=submit] {
 ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(255,0,0,0.4); 
 }
+.accounts-dialog *{
+  font-family: 'Circular', 'ProximaNova', 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+}
+#login-buttons .login-button, .accounts-dialog .login-button{
+  font-family: 'Circular', 'ProximaNova', 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+}
+.accounts-dialog .login-button{
+  margin-bottom:8px;
+}
 #login-buttons .login-close-text{
-  font-weight:500;
+  font-weight:400;
   text-decoration:none;
 }
 #login-buttons .login-button, .accounts-dialog .login-button{
   background-color:$violet;
+  font-size:14px;
+  padding:8px 12px;
+  font-weight:500;
   border:none;
   &:hover{
     background-color:$vivid-violet;
@@ -665,4 +708,14 @@ input[type=submit] {
 .accounts-dialog{
   width:230px;
   text-align: left;
+}
+.accounts-dialog label{
+  font-weight:400;
+  font-size:14px;
+  color:$dark-gray;
+}
+#login-buttons .login-close-text{
+  float:right;
+  font-size:14px;
+  color:$dark-gray;
 }

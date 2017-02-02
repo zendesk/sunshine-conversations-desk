@@ -1,4 +1,5 @@
 <template name="settings">
+  <article class="full-height">
   {{#contentFor 'header'}}
   <h1>Integrations</h1>
   {{/contentFor}}
@@ -25,6 +26,7 @@
   {{else}}
     <h1>An account scope key is required for managing integrations</h1>
   {{/if}}
+</article>
 </template>
 
 <template name="createIntegration">
