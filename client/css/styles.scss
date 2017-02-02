@@ -77,12 +77,11 @@ aside.right {
   width: $right;
   height: 100%;
   z-index:4;
-  overflow-y: auto;
+  overflow-y: scroll;
   margin-bottom: 40px;
 
   .profile {
-    margin: 21px 0;
-    font-size:16px;
+    margin: 10px;
     word-break: break-all;
     padding-bottom: 40px;
   }
