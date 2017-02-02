@@ -21,21 +21,19 @@
 </template>
 
 <template name="message">
-  {{#if date}}
-  <h2>{{date}}</h2>
-  {{/if}}
-  <li>
+  <li class="message-row">
     <img src="{{avatarUrl}}" class="avatar">
     <div class="message-body">
       <div><span class="username">{{name}}</span> <span class="time">{{time}}</span></div>
       <div class="message">
         {{#if items}}
-          Sent a carousel:
-          {{#each items}}
-          <ul>
-            <li>{{> messageItem}}</li>
-          </ul>
-          {{/each}}
+          <div class="message-carousel">
+            <div class="scrolls">
+            {{#each items}}
+              {{> messageItem}}
+            {{/each}}
+            </div>
+          </div>
         {{else}}
           {{#if imageUrl}}<img alt="image message" src="{{imageUrl}}">{{/if}}
           {{#markdown}}{{{text}}}{{/markdown}}
@@ -51,20 +49,20 @@
 </template>
 
 <template name="messageAction">
-  <div class="message-action"><span class="text">{{text}}</span><span class="type">({{type}})</span></div>
+  <div class="message-action"><span class="text">{{text}}<span class="type">{{type}}</span></span></div>
 </template>
 
 <template name="messageItem">
-  <div class="message-carousel">
-    <div>{{title}}</div>
-    <!-- {{#if mediaUrl}}-->
-    <img src="{{mediaUrl}}" />
-    <!-- {{/if}}-->
-    {{#each actions}}
-    <ul>
-      <li>{{> messageAction}}</li>
-    </ul>
-    {{/each}}
-  </div>
+    <div class="carousel-item">
+      <!-- {{#if mediaUrl}}-->
+      <div class="img"><img src="{{mediaUrl}}" /></div>
+      <!-- {{/if}}-->
+      <h3>{{title}}</h3>
+      <ul>
+      {{#each actions}}
+        <li>{{> messageAction}}</li>
+      {{/each}}
+      </ul>
+    </div>
 </template>
 

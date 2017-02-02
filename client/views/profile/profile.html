@@ -1,17 +1,16 @@
 <template name="profile">
   <div class="profile">
     <div class="section">
-      <img class="avatar" src={{appUser.avatarUrl}} />
-      <span class="title">{{conversation.name}}</span>
+      <span class="title top-title">Profile information</span>
       <ul class="profile-detail">
         <li>
-          <span class="label">Id:</span><span>{{conversation.userId}}</span>
+          <span class="label">Id:</span><span class="value">{{conversation.userId}}</span>
         </li>
         <li>
-          <span class="label">Email:</span><span>{{appUser.email}}</span>
+          <span class="label">Email:</span><span class="value">{{appUser.email}}</span>
         </li>
         <li>
-          <span class="label">Signed up:</span><span title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
+          <span class="label">Signed up:</span><span class="value" title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
         </li>
       </ul>
     </div>
@@ -34,12 +33,12 @@
         {{#each customProperties}}
           {{#if string}}
           <li>
-            <span class="label">{{key}}</span><span>{{string}}</span>
+            <span class="label">{{key}}</span><span class="value">{{string}}</span>
           </li>
           {{/if}}
           {{#if date}}
           <li>
-            <span class="label">{{key}}</span><span title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
+            <span class="label">{{key}}</span><span class="value" title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
           </li>
           {{/if}}
         {{/each}}
@@ -54,30 +53,30 @@
     <div class="title">{{decamel platform}} {{#if primary}}<span class="primary">most recent</span>{{/if}}</div>
       <ul>
         <li>
-          <span class="label">Id:</span><span>{{id}}</span>
+          <span class="label">Id:</span><span class="value">{{id}}</span>
         </li>
         {{#if displayName}}
         <li>
-          <span class="label">Display Name:</span><span>{{displayName}}</span>
+          <span class="label">Display Name:</span><span class="value">{{displayName}}</span>
         </li>
         {{/if}}
         <li>
-          <span class="label">Last seen:</span><span title="{{formatDate lastSeen}}">{{fromNow lastSeen}}</span>
+          <span class="label">Last seen:</span><span class="value" title="{{formatDate lastSeen}}">{{fromNow lastSeen}}</span>
         </li>
         {{#if linkedAt}}
         <li>
-          <span class="label">Linked:</span><span title="{{formatDate linkedAt}}">{{fromNow linkedAt}}</span>
+          <span class="label">Linked:</span><span class="value" title="{{formatDate linkedAt}}">{{fromNow linkedAt}}</span>
         </li>
         {{/if}}
         {{#each props}}
           {{#if string}}
           <li>
-            <span class="label">{{decamel key}}</span><span>{{string}}</span>
+            <span class="label">{{decamel key}}</span><span class="value">{{string}}</span>
           </li>
           {{/if}}
           {{#if date}}
           <li>
-            <span class="label">{{decamel key}}</span><span title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
+            <span class="label">{{decamel key}}</span><span class="value" title="{{formatDate appUser.signedUpAt}}">{{fromNow appUser.signedUpAt}}</span>
           </li>
           {{/if}}
         {{/each}}
