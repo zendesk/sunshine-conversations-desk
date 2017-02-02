@@ -160,16 +160,16 @@ aside.right {
   background: linear-gradient(to right, #47407d 0%, #332c52 100%);
   width: calc(100% - 300px);
   .settings{
-    position: absolute;
-    top: 15px;
+    position: relative;
+    top: 2px;
+    margin-right: 21px;
     z-index:6;
-    right: 170px;
-    color:white;
+    color:#dee8ff;
     .fa{
-      font-size:21px;
+      font-size:20px;
     }
     &:active{
-      color:white;
+      color:#dee8ff;
     }
   }
 }
@@ -316,9 +316,10 @@ aside.left {
   box-sizing: border-box;
   padding: $padding/2 $padding $padding/2 $padding;
   line-height: 35px;
-  font-weight: 900;
+  font-weight: 400;
+  font-size:15px;
   a.login-link-text {
-    color: white;
+    color: #dee8ff;
     text-decoration: none !important;
   }
 }
@@ -377,6 +378,14 @@ article {
   }
   p {
     margin:0;
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap; /* HP printers */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+    word-break: break-all;
   }
   .time {
     font-size: 12px;
@@ -425,8 +434,9 @@ article {
     }
     .text{
       margin-right:2px;
-      padding-top:3px;
-      padding-bottom:5px;
+      padding:4px 14px 6px 14px;
+      font-size: 15px;
+      font-weight: 400;
     }
   }
   .message-carousel {
