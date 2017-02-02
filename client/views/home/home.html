@@ -1,12 +1,20 @@
 <template name="home">
   {{#contentFor 'left'}}
   <div class="team">
-    <span class="title">SmoochDesk</span>
+    <picture>
+       <!--[if IE 9]><video style="display: none;"><![endif]-->
+       <source srcset="https://website.smooch.io/static_assets/images/shared/smoochdesk-logo.png, https://website.smooch.io/static_assets/images/shared/retina/smoochdesk-logo.png@2x.png 2x">
+       <!--[if IE 9]></video><![endif]-->
+      <img src="https://website.smooch.io/static_assets/images/shared/smoochdesk-logo.png" alt="" width="31" height="30">
+    </picture>
+    <span class="title">
+      SmoochDesk
+    </span>
   </div>
 
   <ul>
     {{#each conversations}}
-    <li class="{{active}}"><a href="/conversation/{{_id}}"><img class="avatar" src={{avatar}} /> {{name}}</a></li>
+    <a href="/conversation/{{_id}}"><li class="{{active}}"><img class="avatar" src={{avatar}} /> {{name}}</li></a>
     {{/each}}
   </ul>
   {{/contentFor}}
