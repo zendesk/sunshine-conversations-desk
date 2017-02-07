@@ -87,6 +87,11 @@ Router.map(function () {
             });
           })
           break;
+        case 'merge:appUser':
+          body.discarded.forEach((discarded) => {
+            Conversations.remove({userId: discarded._id});
+          });
+          break;
         default:
           break;
       }
