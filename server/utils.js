@@ -13,8 +13,6 @@ Utils.resolveAvatarUrl = function resolveAvatarUrl(appUser) {
     avatarUrl = `https://www.gravatar.com/avatar/${hash}.png?s=100&d=retro&t=${Date.now()}`
   }
 
-  return Object.assign(appUser, {
-    avatarUrl
-  })
+  return avatarUrl;
 }
 

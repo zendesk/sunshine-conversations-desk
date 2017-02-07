@@ -14,8 +14,10 @@ Meteor.methods({
     return SmoochApi.appUsers.get({
       appId: Meteor.settings.smoochAppId,
       userId
-    }).then(({appUser}) => Utils.resolveAvatarUrl(appUser))
-      .catch(console.error)
+    }).then(({appUser}) => {
+      appUser.avatarUrl = Utils.resolveAvatarUrl(appUser)
+      return appUser
+    }).catch(console.error)
     /* */
   }
 });

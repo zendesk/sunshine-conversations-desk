@@ -21,5 +21,9 @@
 </template>
 
 <template name="conversationListItem">
-  <a href="/conversation/{{_id}}"><li class="{{active}}"><img class="avatar" src={{avatarUrl}} /> {{name}}</li></a>
+  <a href="/conversation/{{_id}}">
+    <li>
+      <img class="avatar" src={{avatarUrl}} />{{name}}
+    </li>
+  </a>
 </template>
