@@ -2,7 +2,7 @@ Utils = {}
 
 Utils.resolveAvatarUrl = function resolveAvatarUrl(appUser) {
   let avatarUrl
-  appUser.clients.forEach((client) => {
+  (appUser.clients || []).forEach((client) => {
     if (client.info && client.info.avatarUrl) {
       avatarUrl = client.info.avatarUrl
     }
