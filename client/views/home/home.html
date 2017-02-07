@@ -14,8 +14,12 @@
 
   <ul>
     {{#each conversations}}
-    <a href="/conversation/{{_id}}"><li class="{{active}}"><img class="avatar" src={{avatar}} /> {{name}}</li></a>
+      {{> conversationListItem}}
     {{/each}}
   </ul>
   {{/contentFor}}
+</template>
+
+<template name="conversationListItem">
+  <a href="/conversation/{{_id}}"><li class="{{active}}"><img class="avatar" src={{avatarUrl}} /> {{name}}</li></a>
 </template>

@@ -22,13 +22,14 @@ function findConversation (body) {
 }
 
 function createConversation (body) {
-  const appUser = body.appUser;
+  const appUser = Utils.resolveAvatarUrl(body.appUser);
   let conv = findConversation(body)
   if (!conv) {
     conv = {};
     conv._id = Conversations.insert({
       name: fullName(appUser),
-      userId: appUser._id
+      userId: appUser._id,
+      avatarUrl: appUser.avatarUrl
     });
     return conv;
   }
