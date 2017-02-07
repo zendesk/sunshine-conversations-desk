@@ -1,13 +1,14 @@
-function fullName (appUser) {
+function fullName (body) {
+  const {appUser, messages} = body;
   if (!appUser) {
     return 'Anonymous'
   }
 
-  let fullName = [appUser.givenName, appUser.surname].filter((p) => p).join(' ');
-  if (!fullName) {
-    fullName = appUser.email || `Anonymous User ${Math.floor(Math.random() * 10000)}`
-  }
-  return fullName;
+  let fullName = [appUser.givenName, appUser.surname].filter((p) => p).join(' ')
+  const messageName = messages && messages[0] && messages[0].name
+  fullName = fullName || messageName || 'Anonymous'
+
+  return fullName
 }
 
 function findConversation (body) {
@@ -22,14 +23,13 @@ function findConversation (body) {
 }
 
 function createConversation (body) {
-  const appUser = Utils.resolveAvatarUrl(body.appUser);
   let conv = findConversation(body)
   if (!conv) {
     conv = {};
     conv._id = Conversations.insert({
-      name: fullName(appUser),
-      userId: appUser._id,
-      avatarUrl: appUser.avatarUrl
+      name: fullName(body),
+      userId: body.appUser._id,
+      avatarUrl: Utils.resolveAvatarUrl(body.appUser)
     });
     return conv;
   }
@@ -63,7 +63,7 @@ Router.map(function () {
           if (!conv) {
             conv = createConversation(body)
           }
-          addMessages(conv, body.messages, fullName(body.appUser))
+          addMessages(conv, body.messages, fullName(body))
           break;
 
         case 'message:appMaker':
@@ -82,7 +82,7 @@ Router.map(function () {
             Messages.insert({
               conversationId: conv._id,
               message: pbMessage,
-              name: fullName(body.appUser),
+              name: fullName(body),
               role: 'appUser'
             });
           })
@@ -97,7 +97,8 @@ Router.map(function () {
           _id: conv._id
         }, {
           $set: {
-            name: fullName(body.appUser)
+            avatarUrl: Utils.resolveAvatarUrl(body.appUser),
+            name: fullName(body)
           }
         });
       }
