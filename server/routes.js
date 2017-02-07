@@ -41,6 +41,7 @@ function addMessages (conversation, messages, name) {
   }
 
   messages.forEach(function (m) {
+    delete m._id;
     Messages.insert(Object.assign({}, m, {
       conversationId: conversation._id,
       name: name || m.name || 'Anonymous'
