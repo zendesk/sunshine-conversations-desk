@@ -98,7 +98,7 @@ Router.map(function () {
       }
       /* */
 
-      if (conv && body.appUser) {
+      if (conv && body.appUser && trigger === 'message:appUser') {
         Conversations.update({
           _id: conv._id
         }, {
