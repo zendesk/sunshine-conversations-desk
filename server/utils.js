@@ -2,10 +2,20 @@ Utils = {}
 
 Utils.resolveAvatarUrl = function resolveAvatarUrl(appUser) {
   let avatarUrl
-  (appUser.clients || []).forEach((client) => {
-    if (client.info && client.info.avatarUrl) {
-      avatarUrl = client.info.avatarUrl
+
+  (appUser.clients || []).some((client) => {
+    const info = client.info;
+    if (!info) {
+      return false;
     }
+
+    return ['avatarUrl', 'headimgurl'].some((prop) => {
+      if (!info[prop]) {
+        return false;
+      }
+      avatarUrl = info[prop];
+      return true;
+    });
   });
 
   if (!avatarUrl) {
