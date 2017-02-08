@@ -76,7 +76,10 @@ Template.message.helpers({
   },
 
   imageUrl: function() {
-    return this.mediaType && this.mediaType.match('image') && this.mediaUrl
+    const isImage = (this.mediaType && this.mediaType.includes('image')) ||
+      /(gif|jpg|jpeg|png)$/.test(this.mediaUrl);
+    console.log(isImage);
+    return isImage && this.mediaUrl;
   }
 });
 
