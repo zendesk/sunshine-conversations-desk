@@ -78,7 +78,6 @@ Template.message.helpers({
   imageUrl: function() {
     const isImage = (this.mediaType && this.mediaType.includes('image')) ||
       /(gif|jpg|jpeg|png)$/.test(this.mediaUrl);
-    console.log(isImage);
     return isImage && this.mediaUrl;
   }
 });
