@@ -37,8 +37,11 @@
             </div>
           </div>
         {{else}}
-          {{#if imageUrl}}<img alt="image message" src="{{imageUrl}}">{{/if}}
-          {{#markdown}}{{{text}}}{{/markdown}}
+          {{#if imageUrl}}
+            <img alt="image message" src="{{imageUrl}}">
+          {{else}}
+            {{#markdown}}{{{text}}}{{/markdown}}
+          {{/if}}
           {{#if actions}}
           <ul>
             {{#each actions}}
