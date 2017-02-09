@@ -1,4 +1,4 @@
-<template name="layout">
+<template name="topbar">
   <div class="topbar">
       <div class="user">
         <a class="settings" href="/settings"><i class="fa fa-cog"></i></a>
@@ -8,22 +8,4 @@
         {{> loginButtons}}
     </div>
   </div>
-
-  <header>
-    {{> yield "header"}}
-  </header>
-
-  <aside class="left">
-    {{> yield "left"}}
-  </aside>
-
-  {{> yield}}
-
-  <aside class="right">
-    {{> yield "right"}}
-  </aside>
-
-  <footer>
-    {{> yield "footer"}}
-  </footer>
 </template>

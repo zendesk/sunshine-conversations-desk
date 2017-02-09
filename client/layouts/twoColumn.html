@@ -1,0 +1,19 @@
+<template name="twoColumn">
+  {{> topbar}}
+
+  <header>
+    {{> yield "header"}}
+  </header>
+
+  <aside class="left">
+    {{> yield "left"}}
+  </aside>
+
+  <div class="two-column">
+   {{> yield}}
+  </div>
+
+  <footer>
+    {{> yield "footer"}}
+  </footer>
+</template>

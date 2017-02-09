@@ -1,32 +1,32 @@
 <template name="settings">
   <article class="full-height">
-  {{#contentFor 'header'}}
-  <h1>Integrations</h1>
-  {{/contentFor}}
-  {{> home}}
+    {{#contentFor 'header'}}
+      <h1>Integrations</h1>
+    {{/contentFor}}
+    {{> home}}
 
-  {{#if available}}
-    <ul class="settings-container">
-    {{#each integrationForms}}
+    {{#if available}}
+      <ul class="settings-container">
+      {{#each integrationForms}}
 
-      {{#if integrated}}
-        <li class="settings-item">
-          <div class="title">{{name}}</div>
-            {{> deleteIntegration}}
-        </li>
-      {{else}}
-        <li class="settings-item not-integrated">
-          <div class="title">{{name}}</div>
-            {{> createIntegration}}
-        </li>
-      {{/if}}
+        {{#if integrated}}
+          <li class="settings-item">
+            <div class="title">{{name}}</div>
+              {{> deleteIntegration}}
+          </li>
+        {{else}}
+          <li class="settings-item not-integrated">
+            <div class="title">{{name}}</div>
+              {{> createIntegration}}
+          </li>
+        {{/if}}
 
-    {{/each}}
-    </ul>
-  {{else}}
-    <h1>An account scope key is required for managing integrations</h1>
-  {{/if}}
-</article>
+      {{/each}}
+      </ul>
+    {{else}}
+      <h1>An account scope key is required for managing integrations</h1>
+    {{/if}}
+  </article>
 </template>
 
 <template name="createIntegration">

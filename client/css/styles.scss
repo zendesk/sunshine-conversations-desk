@@ -340,12 +340,17 @@ aside.left {
   margin-right: $padding*2/3;
 }
 
+.two-column article {
+  width: calc(100% - (300px));
+}
+.three-column article {
+  width: calc(100% - (300px + 299px));
+}
 article {
   padding: $padding $padding*2;
   padding-bottom: 32px !important;
   margin-top: 109px;
   height: calc(100% - 187px);
-  width: calc(100% - (300px + 299px));
   position: fixed;
   box-sizing:border-box;
   overflow-y: scroll;

@@ -1,0 +1,23 @@
+<template name="threeColumn">
+  {{> topbar}}
+
+  <header>
+    {{> yield "header"}}
+  </header>
+
+  <aside class="left">
+    {{> yield "left"}}
+  </aside>
+
+  <div class="three-column">
+   {{> yield}}
+  </div>
+
+  <aside class="right">
+    {{> yield "right"}}
+  </aside>
+
+  <footer>
+    {{> yield "footer"}}
+  </footer>
+</template>
