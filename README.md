@@ -22,7 +22,7 @@ A sample business system built with Meteor and the Smooch API.
 
   You'll need a managed account secret key which you can obtain from https://app.smooch.io/account. The key ID should have a `act_` prefix.
 
-  Using the _settings.json.example_ file as a guide, create a _settings.json_ file that contains your appToken, secret key, key ID, and appId.
+  Using the _settings.json.example_ file as a guide, create a _settings.json_ file that contains your appToken, secret key, key ID, and appId. You can find the appId by looking at the identifier in the URL shown in your browser's address bar when you are viewing a Smooch app (ex: https://app.smooch.io/apps/APP_ID/overview
 
 6. Install the npm modules:
 
