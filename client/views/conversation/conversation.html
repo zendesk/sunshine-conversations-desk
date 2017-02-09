@@ -40,7 +40,11 @@
           {{#if imageUrl}}
             <img alt="image message" src="{{imageUrl}}">
           {{else}}
-            {{#markdown}}{{{text}}}{{/markdown}}
+            {{#if isAudio}}
+              {{> audioMessage}}
+            {{else}}
+              {{#markdown}}{{{text}}}{{/markdown}}
+            {{/if}}
           {{/if}}
           {{#if actions}}
           <ul>
@@ -76,4 +80,3 @@
       </ul>
     </div>
 </template>
-

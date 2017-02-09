@@ -1,4 +1,5 @@
-
+// Originally developed by:
+// https://github.com/alex374/amr-player
 /*
 * -- AmrPlayer --
 * params:
@@ -48,7 +49,7 @@ AmrPlayer.prototype = {
         xhr.onreadystatechange = function(e) {
             if ( xhr.readyState == 4 && xhr.status == 200 ) {
                 self.blob = new Blob([xhr.response], {type: 'audio/mpeg'});
-                self.genPLayer();
+                self.genPlayer();
                 self.canPlay = true;
                 download_success_cb && download_success_cb();
             }
@@ -60,7 +61,7 @@ AmrPlayer.prototype = {
         };
         xhr.send();
     },
-    genPLayer: function(){
+    genPlayer: function(){
         var self = this;
         this.isPlaying = false;
         this.readBlob(this.blob, function(data){
@@ -99,7 +100,7 @@ AmrPlayer.prototype = {
         this.on_ready_cb && this.on_ready_cb();
         this.bufferSource.onended = function(){
             self.ended_cb && self.ended_cb();
-            self.genPLayer();
+            self.genPlayer();
         };
     },
     getAudioContext: function(){
@@ -124,7 +125,7 @@ AmrPlayer.prototype = {
     pause: function(){
         if( this.isPlaying && this.canPlay ) {
             this.bufferSource.stop();
-            this.genPLayer();
+            this.genPlayer();
         }
         else{
             this.warn('can not pause now');

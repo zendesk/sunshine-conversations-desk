@@ -79,6 +79,10 @@ Template.message.helpers({
     const isImage = (this.mediaType && this.mediaType.includes('image')) ||
       /(gif|jpg|jpeg|png)$/.test(this.mediaUrl);
     return isImage && this.mediaUrl;
+  },
+
+  isAudio: function() {
+    return /\.amr$/.test(this.text);
   }
 });
 
@@ -87,3 +91,4 @@ Template.messageAction.helpers({
     return this.type === 'reply';
   }
 });
+
