@@ -509,6 +509,16 @@ article {
     }
   }
 
+  .message .audio {
+    height: 65px;
+    p {
+      font-style: italic;
+    }
+    button {
+      margin-top: 5px;
+    }
+  }
+
   .title {
     font-size: 18px;
     font-weight:500;
@@ -670,7 +680,8 @@ footer {
     }
   }
 }
-input[type=submit] {
+
+.button {
     padding:5px 15px; 
     background:#fff;
     border-radius: 5px;

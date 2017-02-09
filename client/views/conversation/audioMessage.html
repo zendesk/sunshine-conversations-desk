@@ -1,0 +1,10 @@
+<template name="audioMessage">
+  <div class="audio">
+    <p>Audio message</p>
+    {{#if isPlaying}}
+      <p>Playing...</p>
+    {{else}}
+      <button class='play button'><i class="fa fa-play"></i></button>
+    {{/if}}
+  </div>
+</template>

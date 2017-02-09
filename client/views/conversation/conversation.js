@@ -78,8 +78,11 @@ Template.message.helpers({
   imageUrl: function() {
     const isImage = (this.mediaType && this.mediaType.includes('image')) ||
       /(gif|jpg|jpeg|png)$/.test(this.mediaUrl);
-    console.log(isImage);
     return isImage && this.mediaUrl;
+  },
+
+  isAudio: function() {
+    return /\.amr$/.test(this.text);
   }
 });
 
@@ -88,3 +91,4 @@ Template.messageAction.helpers({
     return this.type === 'reply';
   }
 });
+
