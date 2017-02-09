@@ -237,6 +237,7 @@ aside.left {
   height: calc(100% - 53px);
   padding: 0;
   box-sizing: border-box;
+  overflow: scroll;
   z-index: 2;
   a {
     padding: 0;
@@ -672,7 +673,7 @@ footer {
 }
 .settings-item{
   border-radius:6px;
-  margin-bottom:12px; 
+  margin-bottom:12px;
   padding:24px;
   position:relative;
   background-color:#f6f7fc;
@@ -687,7 +688,7 @@ footer {
 }
 
 .button {
-    padding:5px 15px; 
+    padding:5px 15px;
     background:#fff;
     border-radius: 5px;
     color:$violet;
@@ -708,7 +709,7 @@ footer {
 ::-webkit-scrollbar {
     width: 21px;
 }
- 
+
 /* Track */
 ::-webkit-scrollbar-track {
     background-color:$light-gray;
@@ -717,17 +718,17 @@ footer {
     background-clip: padding-box;
     border: 6px solid rgba(0, 0, 0, 0);
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    background: #d7dbe5; 
+    background: #d7dbe5;
     border: 6px solid rgba(0, 0, 0, 0);
     background-clip: padding-box;
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(255,0,0,0.4); 
+  background: rgba(255,0,0,0.4);
 }
 .accounts-dialog *{
   font-family: 'Circular', 'ProximaNova', 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
