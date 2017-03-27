@@ -44,6 +44,10 @@
               {{> audioMessage}}
             {{else}}
               {{#markdown}}{{{text}}}{{/markdown}}
+              {{#if metadata.translation}}
+                {{#markdown}}---{{/markdown}}
+                {{#markdown}}Translation: _{{{metadata.translation}}}_{{/markdown}}
+              {{/if}}
             {{/if}}
           {{/if}}
           {{#if actions}}
