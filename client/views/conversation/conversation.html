@@ -47,7 +47,11 @@
               {{#if metadata.translation}}
                 {{#markdown}}---{{/markdown}}
                 {{#markdown}}**{{{metadata.translationAction}}}:**{{/markdown}}
-                {{#markdown}}*{{{metadata.translation}}}*:{{/markdown}}
+                {{#markdown}}*{{{metadata.translation}}}*{{/markdown}}
+              {{/if}}
+              {{#if metadata.sentimentFace}}
+                {{#markdown}}---{{/markdown}}
+                <span class="sentiment-face">{{{metadata.sentimentFace}}}</span>
               {{/if}}
             {{/if}}
           {{/if}}
