@@ -2,6 +2,8 @@
 
 A sample business system built with Meteor and the Smooch API.
 
+<img width="979" alt="screen shot 2017-05-01 at 7 44 26 am" src="https://cloud.githubusercontent.com/assets/2235885/25579018/1a3bf196-2e42-11e7-9ef1-511c200f6d0c.png">
+
 ## How do you run this?
 
 1. Install meteor
@@ -12,7 +14,7 @@ A sample business system built with Meteor and the Smooch API.
 
   `git clone https://github.com/smooch/smooch-desk.git`
 
-3. In the _smooch-desk_ directory, run `npm install`
+3. In the _smooch-desk_ directory, run `npm install` and `meteor npm install`
 
 4. Configure a webhook:
 
@@ -24,11 +26,7 @@ A sample business system built with Meteor and the Smooch API.
 
   Using the _settings.json.example_ file as a guide, create a _settings.json_ file that contains your appToken, secret key, key ID, and appId. You can find the appId by looking at the identifier in the URL shown in your browser's address bar when you are viewing a Smooch app (ex: `https://app.smooch.io/apps/APP_ID/overview`)
 
-6. Install the npm modules:
-
-  `meteor npm install`
-
-7. Run it:
+6. Run it:
 
   `meteor --settings settings.json`
 
