@@ -2,7 +2,10 @@
 
 A sample business system built with Meteor and the Smooch API.
 
-<img width="979" alt="screen shot 2017-05-01 at 7 44 26 am" src="https://cloud.githubusercontent.com/assets/2235885/25579018/1a3bf196-2e42-11e7-9ef1-511c200f6d0c.png">
+_**Intended use:** This code is a proof of concept and is not meant to be used in production. It should be used as a reference only to create your own implementation._
+
+![screen shot 2017-05-02 at 12 14 59 pm](https://cloud.githubusercontent.com/assets/2235885/25628184/53bf3b0c-2f33-11e7-99f2-1ded2e733c02.png)
+
 
 ## How do you run this?
 
