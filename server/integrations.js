@@ -1,5 +1,5 @@
 /** 5. Configure integrations */
-const appId = Meteor.settings.smoochAppId
+const appId = Meteor.settings.public.smoochAppId
 
 function checkScope() {
   if (SmoochApi.scope !== 'account') {

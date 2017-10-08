@@ -23,11 +23,11 @@ _**Intended use:** This code is a proof of concept and is not meant to be used i
 
   Configure a [Smooch webhook](https://app.smooch.io/integrations/webhook) to send "_All Triggers_" to your smoochDesk app at the "/hook" route
 
-5. Configure your secret keys and appToken
+5. Configure your secret keys and appId
 
   You'll need a managed account secret key which you can obtain from https://app.smooch.io/account. The key ID should have a `act_` prefix.
 
-  Using the _settings.json.example_ file as a guide, create a _settings.json_ file that contains your appToken, secret key, key ID, and appId. You can find the appId by looking at the identifier in the URL shown in your browser's address bar when you are viewing a Smooch app (ex: `https://app.smooch.io/apps/APP_ID/overview`)
+  Using the _settings.json.example_ file as a guide, create a _settings.json_ file that contains your appId, secret key, key ID, and appId. You can find the appId by looking at the identifier in the URL shown in your browser's address bar when you are viewing a Smooch app (ex: `https://app.smooch.io/apps/APP_ID/overview`)
 
 6. Run it:
 
