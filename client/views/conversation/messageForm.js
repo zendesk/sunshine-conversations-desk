@@ -43,5 +43,11 @@ Template.messageForm.events({
     event.preventDefault();
     Dropdowns.hideAll()
     Message.sendPostback();
+  },
+
+  'click a.transfer': function sendTransferLink(event, instance) {
+    event.preventDefault();
+    Dropdowns.hideAll()
+    Message.sendTransferLink();
   }
 });

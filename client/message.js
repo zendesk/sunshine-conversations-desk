@@ -164,3 +164,24 @@ Message.sendPostback = function() {
   })
   /* */
 }
+
+Message.sendTransferLink = function() {
+  const conv = Conversations.findOne({
+    _id: Router.current().params._id
+  });
+
+  Meteor.call('getAuthCode', conv.userId, (err, authCode) => {
+    if (err) {
+      alert(err);
+    } else {
+      sendMessage({
+        text: 'Do you want to transfer to a secure channel?',
+        actions: [{
+          'type': 'link',
+          'text': 'Transfer',
+          'uri': `${Meteor.absoluteUrl()}/web-messenger#ac=${authCode}`
+        }]
+      })
+    }
+  });
+}

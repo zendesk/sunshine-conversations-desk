@@ -1,3 +1,4 @@
+
 Meteor.methods({
   sendMessage: (userId, message) => {
     /** 2. Send messages */
@@ -19,5 +20,11 @@ Meteor.methods({
       return appUser
     }).catch(console.error)
     /* */
+  },
+
+  getAuthCode: (appUserId) => {
+    return SmoochApi.appUsers.getAuthCode(appUserId)
+      .then(({authCode}) => authCode)
+      .catch(console.error);
   }
 });
