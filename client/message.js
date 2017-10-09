@@ -179,7 +179,7 @@ Message.sendTransferLink = function() {
         actions: [{
           'type': 'link',
           'text': 'Transfer',
-          'uri': `${Meteor.absoluteUrl()}/web-messenger#ac=${authCode}`
+          'uri': `${Meteor.absoluteUrl()}web-messenger#${authCode}`
         }]
       })
     }
