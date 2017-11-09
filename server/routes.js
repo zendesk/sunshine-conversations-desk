@@ -63,8 +63,17 @@ Router.map(function () {
         case 'message:appUser':
           if (!conv) {
             conv = createConversation(body)
+            SmoochApi.appUsers.getMessages(Meteor.settings.smoochAppId, body.appUser._id)
+              .then(function(data) {
+                addMessages(conv, data.messages, fullName(body))
+              })
+              .catch(function(error) {
+                console.log('Error fetching history', error);
+                addMessages(conv, body.messages, fullName(body))
+              })
+          } else {
+            addMessages(conv, body.messages, fullName(body))
           }
-          addMessages(conv, body.messages, fullName(body))
           break;
 
         case 'message:appMaker':
