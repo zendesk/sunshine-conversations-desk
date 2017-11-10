@@ -65,7 +65,7 @@ Router.map(function () {
             conv = createConversation(body)
             SmoochApi.appUsers.getMessages(Meteor.settings.smoochAppId, body.appUser._id)
               .then(function(data) {
-                addMessages(conv, data.messages, fullName(body))
+                addMessages(conv, data.messages)
               })
               .catch(function(error) {
                 console.log('Error fetching history', error);
