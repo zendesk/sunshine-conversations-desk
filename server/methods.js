@@ -26,5 +26,15 @@ Meteor.methods({
     return SmoochApi.appUsers.getAuthCode(appUserId)
       .then(({authCode}) => authCode)
       .catch(console.error);
+  },
+
+  getLinkRequests: (userId) => {
+    return Integrations.getIntegrations().then((integrations) => {
+      const integrationIds = integrations.map((i) => i._id);
+      return SmoochApi.appUsers.getLinkRequests({
+        appId: Meteor.settings.public.smoochAppId,
+        userId,
+        integrationIds});
+    }).then(({linkRequests}) => linkRequests)
   }
 });

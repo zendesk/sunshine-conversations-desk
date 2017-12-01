@@ -7,7 +7,7 @@ function checkScope() {
   }
 }
 
-Meteor.methods({
+Integrations = {
   getIntegrations: () => {
     checkScope();
     return SmoochApi.integrations.list(appId).then((res) => {
@@ -24,5 +24,7 @@ Meteor.methods({
     checkScope();
     return SmoochApi.integrations.delete(appId, integrationId);
   }
-});
+};
+
+Meteor.methods(Integrations);
 /* */

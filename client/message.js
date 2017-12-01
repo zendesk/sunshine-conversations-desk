@@ -165,7 +165,7 @@ Message.sendPostback = function() {
   /* */
 }
 
-Message.sendTransferLink = function() {
+Message.transferToSdk = function() {
   const conv = Conversations.findOne({
     _id: Router.current().params._id
   });
@@ -181,6 +181,30 @@ Message.sendTransferLink = function() {
           'text': 'Transfer',
           'uri': `${Meteor.absoluteUrl()}web-messenger#${authCode}`
         }]
+      })
+    }
+  });
+}
+
+Message.transferToOtt = function() {
+  const conv = Conversations.findOne({
+    _id: Router.current().params._id
+  });
+
+  Meteor.call('getLinkRequests', conv.userId, (err, linkRequests) => {
+    if (err) {
+      alert(err);
+    } else {
+      const actions = linkRequests.map((lr) => {
+        return {
+          type: 'link',
+          text: lr.type.toUpperCase(),
+          uri: lr.url
+        }
+      })
+      sendMessage({
+        text: 'Transfer your preferred messaging app:',
+        actions
       })
     }
   });
