@@ -43,5 +43,17 @@ Template.messageForm.events({
     event.preventDefault();
     Dropdowns.hideAll()
     Message.sendPostback();
+  },
+
+  'click a.transferToSdk': function transferToSdk(event, instance) {
+    event.preventDefault();
+    Dropdowns.hideAll()
+    Message.transferToSdk();
+  },
+
+  'click a.transferToOtt': function transferToOtt(event, instance) {
+    event.preventDefault();
+    Dropdowns.hideAll()
+    Message.transferToOtt();
   }
 });

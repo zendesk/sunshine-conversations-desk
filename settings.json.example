@@ -1,8 +1,7 @@
 {
     "smoochKeyId": "your_key_id",
     "smoochSecret": "your_secret",
-    "smoochAppId": "your_app_id",
     "public": {
-        "smoochAppToken": "your_apptoken"
+        "smoochAppId": "your_app_id"
     }
 }
