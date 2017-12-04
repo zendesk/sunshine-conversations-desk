@@ -23,7 +23,8 @@ Meteor.methods({
   },
 
   getAuthCode: (appUserId) => {
-    return SmoochApi.appUsers.getAuthCode(appUserId)
+    const appId = Meteor.settings.public.smoochAppId;
+    return SmoochApi.appUsers.getAuthCode(appId, appUserId)
       .then(({authCode}) => authCode)
       .catch(console.error);
   },
