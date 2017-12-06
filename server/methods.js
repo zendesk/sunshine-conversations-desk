@@ -2,6 +2,7 @@
 Meteor.methods({
   sendMessage: (userId, message) => {
     /** 2. Send messages */
+
     SmoochApi.appUsers.sendMessage({
       appId: Meteor.settings.public.smoochAppId,
       userId,
@@ -37,5 +38,13 @@ Meteor.methods({
         userId,
         integrationIds});
     }).then(({linkRequests}) => linkRequests)
+  },
+
+  setUserProperties: (userId, props) => {
+    const appId = Meteor.settings.public.smoochAppId;
+
+    return SmoochApi.appUsers.update(appId, userId, {"properties": props}).then(({appUser}) => {
+      return appUser
+    }).catch(console.error)
   }
 });

@@ -63,7 +63,7 @@ Router.map(function () {
         case 'message:appUser':
           if (!conv) {
             conv = createConversation(body)
-            SmoochApi.appUsers.getMessages(Meteor.settings.smoochAppId, body.appUser._id)
+            SmoochApi.appUsers.getMessages(Meteor.settings.public.smoochAppId, body.appUser._id)
               .then(function(data) {
                 addMessages(conv, data.messages)
               })

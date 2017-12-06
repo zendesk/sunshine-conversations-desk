@@ -55,5 +55,12 @@ Template.messageForm.events({
     event.preventDefault();
     Dropdowns.hideAll()
     Message.transferToOtt();
+  },
+
+  'click a.leaveChat': function leaveChat(event, instance) {
+    event.preventDefault();
+    Dropdowns.hideAll()
+    Message.leaveChat();
   }
+
 });

@@ -209,3 +209,20 @@ Message.transferToOtt = function() {
     }
   });
 }
+
+Message.leaveChat = function() {
+  const conv = Conversations.findOne({
+    _id: Router.current().params._id
+  });
+
+  Meteor.call('setUserProperties', conv.userId, {"AGENT_SESSION":false}, (err, appUser) => {
+    if (err) {
+      alert(err);
+    } else {
+      //Delete the conversation in SmoochDesk, will be re-retrieved next time user appears...
+      sendMessage({"text": "👋"});
+      Conversations.remove(Router.current().params._id);
+      Router.go('/');
+    }
+  })
+}
