@@ -54,13 +54,45 @@ Router.map(function () {
     path: '/hook',
     where: 'server',
     action: function () {
+      // console.log(this.request.body);
+
       const body = this.request.body;
-      const trigger = body.trigger;
+      let trigger = body.trigger;
       let conv = findConversation(body)
+
+      /*if (!trigger && body.message && body.message.metadata) {
+        console.log('No trigger!! It is a pipeline processing call');
+        const appId = Meteor.settings.public.smoochAppId;
+        const userId = body.appUser._id;
+          SmoochApi.appUsers.get({
+              appId,
+              userId
+          }).then(function (appUser) {
+                console.log('AppUser fetched: ', appUser);
+                const props = appUser.properties;
+                if (props && props.AGENT_SESSION && props.AGENT_SESSION ===  'WAITING') {
+                  // trigger = "message:appUser";
+                  // body.messages = [];
+                  // body.messages.push(body.message);
+                    props.AGENT_SESSION = 'HANDLING';
+                    console.log('Setting AGENT_SESSION to HANDLING');
+                    return SmoochApi.appUsers.update(appId, userId, {"properties": props}).then(({appUser}) => {
+                        console.log('AGENT_SESSION = HANDLING set');
+                        return appUser
+                    }).catch(console.error);
+                }
+            })
+            .catch(function (err) {
+                console.error('Error while fetching user', err)
+            })
+      }*/
+
+      console.log(trigger);
 
       /** 1. Receve user messages */
       switch (trigger) {
         case 'message:appUser':
+          console.log('message:appUser case');
           if (!conv) {
             conv = createConversation(body)
             SmoochApi.appUsers.getMessages(Meteor.settings.public.smoochAppId, body.appUser._id)
@@ -80,7 +112,31 @@ Router.map(function () {
           if (!conv) {
             break;
           }
-          addMessages(conv, body.messages)
+            const appId = Meteor.settings.public.smoochAppId;
+            const userId = body.appUser._id;
+            SmoochApi.appUsers.get({
+                appId,
+                userId
+            }).then(function ({appUser}) {
+                console.log('AppUser fetched: ', appUser);
+                const props = appUser.properties;
+                if (props && props.AGENT_SESSION && props.AGENT_SESSION ===  'WAITING') {
+                    // trigger = "message:appUser";
+                    // body.messages = [];
+                    // body.messages.push(body.message);
+                    props.AGENT_SESSION = 'HANDLING';
+                    console.log('Setting AGENT_SESSION to HANDLING');
+                    return SmoochApi.appUsers.update(appId, userId, {"properties": props}).then(({appUser}) => {
+                        console.log('AGENT_SESSION = HANDLING set');
+                        return appUser
+                    }).catch(console.error);
+                }
+            })
+                .catch(function (err) {
+                    console.error('Error while fetching user', err)
+                });
+
+          addMessages(conv, body.messages);
           break;
 
         case 'postback':

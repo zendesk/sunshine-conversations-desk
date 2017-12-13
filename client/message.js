@@ -215,7 +215,7 @@ Message.leaveChat = function() {
     _id: Router.current().params._id
   });
 
-  Meteor.call('setUserProperties', conv.userId, {"AGENT_SESSION":false}, (err, appUser) => {
+  Meteor.call('setUserProperties', conv.userId, {"AGENT_SESSION": 'DONE'}, (err, appUser) => {
     if (err) {
       alert(err);
     } else {
