@@ -11,29 +11,27 @@ _**Intended use:** This code is a proof of concept and is not meant to be used i
 
 1. Install meteor
 
-  `curl https://install.meteor.com/ | sh`
+    `curl https://install.meteor.com/ | sh`
 
-2. Clone this thing
+2. Clone this repository
 
-  `git clone https://github.com/smooch/smooch-desk.git`
+    `git clone https://github.com/smooch/smooch-desk.git`
 
 3. In the _smooch-desk_ directory, run `npm install` and `meteor npm install`
 
-4. Configure a webhook:
+4. Configure a [Smooch webhook](https://app.smooch.io/integrations/webhook) to send "_All Triggers_" to your smoochDesk app at the "/hook" route
 
-  Configure a [Smooch webhook](https://app.smooch.io/integrations/webhook) to send "_All Triggers_" to your smoochDesk app at the "/hook" route
+5. Using the _settings.json.example_ file as a guide, create a _settings.json_ file and populate the missing fields:
+  
+    - For `smoochSecretKey` and `smoochKeyId`: You need an *account* level key, found under https://app.smooch.io/account. (If your `smoochKeyId` has an `app_` prefix, it won't work)
 
-5. Configure your secret keys and appId
-
-  You'll need a managed account secret key which you can obtain from https://app.smooch.io/account. The key ID should have a `act_` prefix.
-
-  Using the _settings.json.example_ file as a guide, create a _settings.json_ file that contains your appId, secret key, key ID, and appId. You can find the appId by looking at the identifier in the URL shown in your browser's address bar when you are viewing a Smooch app (ex: `https://app.smooch.io/apps/APP_ID/overview`)
+    - The `smoochAppId` can be found in your app's settings page.
 
 6. Run it:
 
-  `meteor --settings settings.json`
+    `meteor --settings settings.json`
 
-  You can visit "/web-messenger" to send test messages as an end-user
+    You can visit "/web-messenger" to send test messages as an end-user
 
 ## Based on Meteor Slack
 
