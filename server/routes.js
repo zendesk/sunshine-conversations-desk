@@ -75,10 +75,12 @@ Router.map(function () {
             addMessages(conv, body.messages, fullName(body))
           }
 
+          const {previousActorId, currentActorId} = body;
           Messages.insert({
+            received: + new Date() / 1000,
             conversationId: conv._id,
             name: 'Notification',
-            text: `*Converstaion transferred from ${body.previousActorId}*`,
+            text: `*Converstaion transferred from ${body.previousActorId} to ${body.currentActorId}*`,
             type: 'notification'
           });
           break;

@@ -1,4 +1,3 @@
-
 Meteor.methods({
   sendMessage: (userId, message) => {
     /** 2. Send messages */
@@ -8,7 +7,7 @@ Meteor.methods({
       userId,
       message
     }).catch(console.error)
-    /* */
+  /* */
   },
 
   getUser: (userId) => {
@@ -20,7 +19,7 @@ Meteor.methods({
       appUser.avatarUrl = Utils.resolveAvatarUrl(appUser)
       return appUser
     }).catch(console.error)
-    /* */
+  /* */
   },
 
   getAuthCode: (appUserId) => {
@@ -36,19 +35,54 @@ Meteor.methods({
       return SmoochApi.appUsers.getLinkRequests({
         appId: Meteor.settings.public.smoochAppId,
         userId,
-        integrationIds});
+        integrationIds
+      });
     }).then(({linkRequests}) => linkRequests)
   },
 
   setUserProperties: (userId, props) => {
     const appId = Meteor.settings.public.smoochAppId;
 
-    return SmoochApi.appUsers.update(appId, userId, {"properties": props}).then(({appUser}) => {
+    return SmoochApi.appUsers.update(appId, userId, {
+      'properties': props
+    }).then(({appUser}) => {
       return appUser
     }).catch(console.error)
   },
 
-  switchActor: (userId, actorId) => {
-    console.log('TODO: switchActor goes here', userId, actorId);
+  switchActor: async (conversationId, userId, actorId) => {
+    const appId = Meteor.settings.public.smoochAppId;
+    const lastMessage = await SmoochApi.appUsers.getMessages({
+      appId,
+      userId
+    }).then((response) => {
+      return response.messages[response.messages.length - 1];
+    });
+
+    HTTP.post(`${SmoochApi.serviceUrl}/v1/apps/${appId}/appusers/${userId}/conversation/actor`, {
+      headers: SmoochApi.authHeaders,
+      data: {
+        actorId,
+        messageId: lastMessage._id
+      }
+    }, (err, res) => {
+      if (err) {
+        console.error(err.message);
+      } else {
+        const {previousActorId, currentActorId} = res.data;
+        const text = (previousActorId && currentActorId) ?
+          `*Converstaion transferred from ${previousActorId} to ${currentActorId}*` :
+          '*Conversation has already been transferred*';
+
+        Messages.insert(Object.assign({}, {
+          received: +new Date() / 1000,
+          conversationId,
+          role: 'appMaker',
+          name: 'Notification',
+          type: 'notification',
+          text
+        }));
+      }
+    });
   }
 });

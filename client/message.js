@@ -19,13 +19,13 @@ function sendMessage (message) {
   });
 }
 
-Message.sendText = function(text) {
+Message.sendText = function (text) {
   sendMessage({
     text
   });
 }
 
-Message.sendLink = function() {
+Message.sendLink = function () {
   /** 4. Structured messages - link buttons */
   sendMessage({
     text: 'Some great websites:',
@@ -46,10 +46,10 @@ Message.sendLink = function() {
       },
     ]
   });
-  /* */
+/* */
 }
 
-Message.sendQuickReply = function() {
+Message.sendQuickReply = function () {
   /** 4. Structured messages - quick replies */
   sendMessage({
     text: 'What do you want to eat for dinner?',
@@ -65,10 +65,10 @@ Message.sendQuickReply = function() {
       'payload': 'BURRITOS'
     }]
   })
-  /* */
+/* */
 }
 
-Message.sendCarousel = function() {
+Message.sendCarousel = function () {
   /** 4. Structured messages - carousel */
   sendMessage({
     items: [{
@@ -138,10 +138,10 @@ Message.sendCarousel = function() {
       }]
     }]
   })
-  /* */
+/* */
 }
 
-Message.sendPostback = function() {
+Message.sendPostback = function () {
   /** 4. Structured messages - postback */
   sendMessage({
     text: 'Here are some postbacks:',
@@ -162,10 +162,10 @@ Message.sendPostback = function() {
       },
     ]
   })
-  /* */
+/* */
 }
 
-Message.transferToSdk = function() {
+Message.transferToSdk = function () {
   const conv = Conversations.findOne({
     _id: Router.current().params._id
   });
@@ -186,7 +186,7 @@ Message.transferToSdk = function() {
   });
 }
 
-Message.transferToOtt = function() {
+Message.transferToOtt = function () {
   const conv = Conversations.findOne({
     _id: Router.current().params._id
   });
@@ -210,38 +210,35 @@ Message.transferToOtt = function() {
   });
 }
 
-Message.leaveChat = function() {
+Message.leaveChat = function () {
   const conv = Conversations.findOne({
     _id: Router.current().params._id
   });
 
-  Meteor.call('setUserProperties', conv.userId, {"AGENT_SESSION":false}, (err, appUser) => {
+  Meteor.call('setUserProperties', conv.userId, {
+    'AGENT_SESSION': false
+  }, (err, appUser) => {
     if (err) {
       alert(err);
     } else {
       //Delete the conversation in SmoochDesk, will be re-retrieved next time user appears...
-      sendMessage({"text": "👋"});
+      sendMessage({
+        'text': '👋'
+      });
       Conversations.remove(Router.current().params._id);
       Router.go('/');
     }
   })
 }
 
-Message.switchActor = function(actorId) {
+Message.switchActor = function (actorId) {
   const conv = Conversations.findOne({
     _id: Router.current().params._id
   });
 
-  Meteor.call('switchActor', conv.userId, actorId, (err) => {
+  Meteor.call('switchActor', conv._id, conv.userId, actorId, (err) => {
     if (err) {
       alert(err);
-    } else {
-      Messages.insert({
-        conversationId: conv._id,
-        name: 'Notification',
-        text: `*Converstaion transferred to ${actorId}*`,
-        type: 'notification'
-      });
     }
   })
 }
