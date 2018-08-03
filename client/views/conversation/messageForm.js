@@ -61,6 +61,11 @@ Template.messageForm.events({
     event.preventDefault();
     Dropdowns.hideAll()
     Message.leaveChat();
-  }
+  },
 
+  'click a.bananabot': function bananabot(event, instance) {
+    event.preventDefault();
+    Dropdowns.hideAll()
+    Message.switchActor('bananabot');
+  }
 });

@@ -48,7 +48,7 @@ Template.conversation.helpers({
 });
 
 Template.message.rendered = function() {
-  this.lastNode.lastElementChild.scrollIntoView()
+  this.lastNode.previousSibling.scrollIntoView()
 };
 
 Template.message.helpers({

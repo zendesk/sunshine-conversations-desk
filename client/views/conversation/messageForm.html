@@ -1,22 +1,36 @@
 <template name="messageForm">
-  <form class="message-form">
+  <div class="message-form">
+  <form>
     {{#dropdownTrigger name="chatOptions" }}
-    <div class="dropup"><i class="fa fa-paperclip"></i></div>
+      <div class="dropup"><i class="fa fa-paperclip"></i></div>
     {{/dropdownTrigger}}
 
     {{#dropdown name="chatOptions" left="73" top="0" direction="n" animation="appear"}}
-    <div class="menu">
-      <ul>
-        <li><a class="link">Send Link Button</a></li>
-        <li><a class="quickreply">Send Quick Reply</a></li>
-        <li><a class="carousel">Send Carousel</a></li>
-        <li><a class="postback">Send Postback Button</a></li>
-        <li><a class="transferToSdk">Transfer To SDK</a></li>
-        <li><a class="transferToOtt">Transfer To OTT</a></li>
-        <li><a class="leaveChat">Leave Chat</a></li>
-      </ul>
-    </div>
+      <div class="menu">
+        <ul>
+          <li><a class="link">Send Link Button</a></li>
+          <li><a class="quickreply">Send Quick Reply</a></li>
+          <li><a class="carousel">Send Carousel</a></li>
+          <li><a class="postback">Send Postback Button</a></li>
+          <li><a class="transferToSdk">Transfer To SDK</a></li>
+          <li><a class="transferToOtt">Transfer To OTT</a></li>
+          <li><a class="leaveChat">Leave Chat</a></li>
+        </ul>
+      </div>
     {{/dropdown}}
     <textarea rows="1" cols="100" placeholder="Type a message"></textarea>
   </form>
+
+  {{#dropdownTrigger name="transfer" }}
+    <div class="dropup dropup-right"><i class="fa fa-angle-double-right"></i></div>
+  {{/dropdownTrigger}}
+
+  {{#dropdown name="transfer" left="-50" top="0" direction="n" animation="appear"}}
+    <div class="menu">
+      <ul>
+        <li><a class="bananabot">Banana bot</a></li>
+      </ul>
+    </div>
+  {{/dropdown}}
+  </div>
 </template>

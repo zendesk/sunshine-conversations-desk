@@ -46,5 +46,9 @@ Meteor.methods({
     return SmoochApi.appUsers.update(appId, userId, {"properties": props}).then(({appUser}) => {
       return appUser
     }).catch(console.error)
+  },
+
+  switchActor: (userId, actorId) => {
+    console.log('TODO: switchActor goes here', userId, actorId);
   }
 });

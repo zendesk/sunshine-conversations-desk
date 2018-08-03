@@ -226,3 +226,22 @@ Message.leaveChat = function() {
     }
   })
 }
+
+Message.switchActor = function(actorId) {
+  const conv = Conversations.findOne({
+    _id: Router.current().params._id
+  });
+
+  Meteor.call('switchActor', conv.userId, actorId, (err) => {
+    if (err) {
+      alert(err);
+    } else {
+      Messages.insert({
+        conversationId: conv._id,
+        name: 'Notification',
+        text: `*Converstaion transferred to ${actorId}*`,
+        type: 'notification'
+      });
+    }
+  })
+}

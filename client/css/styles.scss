@@ -596,6 +596,10 @@ footer {
   z-index: 1;
 
   .message-form {
+    form {
+      padding-right: 25px;
+    }
+
     .dropup {
       cursor: pointer;
       border: none;
@@ -609,6 +613,12 @@ footer {
       z-index:3;
       color: lightgrey;
     }
+
+    .dropup-right {
+      right: 0;
+      top: 0;
+    }
+
     .menu {
       background: #fff;
       box-shadow: 0 4px 8px rgba(63, 49, 178, .1), 0 2px 6px rgba(63, 49, 178, .04);
@@ -617,6 +627,12 @@ footer {
       padding: 10px 10px 4px 10px;
       color: $dark-gray;
       font-size: .9375rem;
+
+      .menu-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
 
       a {
         cursor: pointer;
@@ -633,6 +649,7 @@ footer {
         background: $violet;
       }
     }
+
     textarea {
       z-index: 2;
     }
