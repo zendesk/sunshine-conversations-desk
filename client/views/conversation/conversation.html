@@ -72,7 +72,11 @@
   {{#if typeIsReply}}
     <li class="reply"><div class="message-action"><span class="text">{{text}}<span class="type">{{type}}</span></span></div></li>
   {{else}}
-    <li><div class="message-action"><span class="text">{{text}}<span class="type">{{type}}</span></span></div></li>
+    {{#if typeIsLink}}
+      <li><div class="message-action"><a href="{{uri}}" target="_blank"><span class="text">{{text}}<span class="type">{{type}}</span></span></a></div></li>
+    {{else}}
+      <li><div class="message-action"><span class="text">{{text}}<span class="type">{{type}}</span></span></div></li>
+    {{/if}}
   {{/if}}
 </template>
 

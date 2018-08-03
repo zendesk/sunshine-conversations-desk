@@ -335,6 +335,7 @@ aside.left {
 
 .avatar {
   width: 40px;
+  height: 40px;
   border-radius: 50%;
   border:1px solid $border-color;
   float: left;
@@ -412,6 +413,9 @@ article {
     max-height: 600px;
   }
   .message-action {
+    a {
+      text-decoration: none;
+    }
     .text {
       padding: 2px 12px 4px 12px;
       margin-right: 10px;
