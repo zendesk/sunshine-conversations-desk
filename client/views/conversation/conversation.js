@@ -83,6 +83,10 @@ Template.message.helpers({
 
   isAudio: function() {
     return /\.amr$/.test(this.text);
+  },
+
+  isNotification: function() {
+    return this.type === 'notification';
   }
 });
 

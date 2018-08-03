@@ -61,6 +61,28 @@ Router.map(function () {
       /** 1. Receve user messages */
       switch (trigger) {
         case 'switch:actor':
+          if (!conv) {
+            conv = createConversation(body)
+            SmoochApi.appUsers.getMessages(Meteor.settings.public.smoochAppId, body.appUser._id)
+              .then(function(data) {
+                addMessages(conv, data.messages)
+              })
+              .catch(function(error) {
+                console.log('Error fetching history', error);
+                addMessages(conv, body.messages, fullName(body))
+              })
+          } else {
+            addMessages(conv, body.messages, fullName(body))
+          }
+
+          Messages.insert({
+            conversationId: conv._id,
+            name: 'Notification',
+            text: `*Converstaion transferred from ${body.previousActorId}*`,
+            type: 'notification'
+          });
+          break;
+
         case 'message:appUser':
           if (!conv) {
             conv = createConversation(body)

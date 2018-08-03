@@ -23,49 +23,55 @@
 </template>
 
 <template name="message">
-  <li class="message-row">
-    <img src="{{avatarUrl}}" class="avatar">
-    <div class="message-body">
-      <div><span class="username">{{name}}</span> <span class="time">{{time}}</span></div>
-      <div class="message">
-        {{#if items}}
-          <div class="message-carousel">
-            <div class="scrolls">
-            {{#each items}}
-              {{> messageItem}}
-            {{/each}}
+  {{#if isNotification}}
+    <li class="message-row">
+      {{#markdown}}{{{text}}}{{/markdown}}
+    </li>
+  {{else}}
+    <li class="message-row">
+      <img src="{{avatarUrl}}" class="avatar">
+      <div class="message-body">
+        <div><span class="username">{{name}}</span> <span class="time">{{time}}</span></div>
+        <div class="message">
+          {{#if items}}
+            <div class="message-carousel">
+              <div class="scrolls">
+              {{#each items}}
+                {{> messageItem}}
+              {{/each}}
+              </div>
             </div>
-          </div>
-        {{else}}
-          {{#if imageUrl}}
-            <img alt="image message" src="{{imageUrl}}">
           {{else}}
-            {{#if isAudio}}
-              {{> audioMessage}}
+            {{#if imageUrl}}
+              <img alt="image message" src="{{imageUrl}}">
             {{else}}
-              {{#markdown}}{{{text}}}{{/markdown}}
-              {{#if metadata.translation}}
-                {{#markdown}}---{{/markdown}}
-                {{#markdown}}**{{{metadata.translationAction}}}:**{{/markdown}}
-                {{#markdown}}*{{{metadata.translation}}}*{{/markdown}}
-              {{/if}}
-              {{#if metadata.sentimentFace}}
-                {{#markdown}}---{{/markdown}}
-                <span class="sentiment-face">{{{metadata.sentimentFace}}}</span>
+              {{#if isAudio}}
+                {{> audioMessage}}
+              {{else}}
+                {{#markdown}}{{{text}}}{{/markdown}}
+                {{#if metadata.translation}}
+                  {{#markdown}}---{{/markdown}}
+                  {{#markdown}}**{{{metadata.translationAction}}}:**{{/markdown}}
+                  {{#markdown}}*{{{metadata.translation}}}*{{/markdown}}
+                {{/if}}
+                {{#if metadata.sentimentFace}}
+                  {{#markdown}}---{{/markdown}}
+                  <span class="sentiment-face">{{{metadata.sentimentFace}}}</span>
+                {{/if}}
               {{/if}}
             {{/if}}
+            {{#if actions}}
+            <ul>
+              {{#each actions}}
+              {{> messageAction}}
+              {{/each}}
+            </ul>
+            {{/if}}
           {{/if}}
-          {{#if actions}}
-          <ul>
-            {{#each actions}}
-             {{> messageAction}}
-            {{/each}}
-          </ul>
-          {{/if}}
-        {{/if}}
+        </div>
       </div>
-    </div>
-  </li>
+    </li>
+  {{/if}}
 </template>
 
 <template name="messageAction">
