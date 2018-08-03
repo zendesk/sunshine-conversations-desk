@@ -60,6 +60,7 @@ Router.map(function () {
 
       /** 1. Receve user messages */
       switch (trigger) {
+        case 'switch:actor':
         case 'message:appUser':
           if (!conv) {
             conv = createConversation(body)
