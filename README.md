@@ -9,9 +9,9 @@ _**Intended use:** This code is a proof of concept and is not meant to be used i
 
 ## How do you run this?
 
-1. Install meteor
+1. Install meteor. Note that currently this project requires meteor 1.6
 
-    `curl https://install.meteor.com/ | sh`
+    `curl https://install.meteor.com/?release=1.6 | sh`
 
 2. Clone this repository
 
