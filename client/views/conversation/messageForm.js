@@ -67,5 +67,11 @@ Template.messageForm.events({
     event.preventDefault();
     Dropdowns.hideAll()
     Message.switchActor('bananabot');
+  },
+
+  'click a.smilebot': function smilebot(event, instance) {
+    event.preventDefault();
+    Dropdowns.hideAll();
+    Message.switchActor('smilebot');
   }
 });
