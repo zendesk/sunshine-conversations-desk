@@ -13,17 +13,21 @@
   </div>
 
   <ul>
-    {{#each conversations}}
-      {{> conversationListItem}}
+    {{#each conversation in conversations}}
+      {{> conversationListItem conversation=conversation}}
     {{/each}}
   </ul>
   {{/contentFor}}
 </template>
 
 <template name="conversationListItem">
-  <a href="/conversation/{{_id}}">
-    <li>
-      <img class="avatar" src={{avatarUrl}} />{{name}}
+  <a href="/conversation/{{conversation._id}}">
+    <li class="conversation-entry">
+        {{#if isAssignedToAgent conversation.assigned}}
+          <span class="assigned">⭐</span>
+        {{/if}}
+      <img class="avatar" src={{conversation.avatarUrl}} />
+      <div class="entry-name">{{conversation.name}}</div>
     </li>
   </a>
 </template>

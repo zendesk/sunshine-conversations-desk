@@ -769,3 +769,13 @@ footer {
   font-size:14px;
   color:$dark-gray;
 }
+
+.assigned {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.conversation-entry {
+    position: relative;
+}

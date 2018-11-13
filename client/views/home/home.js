@@ -1,3 +1,15 @@
+Template.conversationListItem.onCreated(function () {
+  this.subscribe('conversations');
+  this.subscribe('allUserNames');
+});
+
+Template.conversationListItem.helpers({
+    isAssignedToAgent: function(assigned) {
+        var user = Meteor.user();
+        return assigned === user.username;
+    },
+});
+
 Template.home.onCreated(function () {
   this.subscribe('conversations');
   this.subscribe('allUserNames');

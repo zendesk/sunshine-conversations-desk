@@ -40,11 +40,22 @@ function addMessages (conversation, messages, name) {
     return
   }
 
-  messages.forEach(function (m) {
-    delete m._id;
-    Messages.insert(Object.assign({}, m, {
+  messages.forEach(function (message) {
+    delete message._id;
+
+    if (message.metadata && message.metadata.assigned) {
+        Conversations.update({
+          _id: conversation._id
+        }, {
+          $set: {
+            assigned: message.metadata.assigned,
+          }
+        });
+    }
+
+    Messages.insert(Object.assign({}, message, {
       conversationId: conversation._id,
-      name: name || m.name || 'Anonymous'
+      name: name || message.name || 'Anonymous'
     }));
   });
 }
