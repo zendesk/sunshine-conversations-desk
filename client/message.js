@@ -57,6 +57,24 @@ Message.sendText = function(text) {
   });
 }
 
+Message.sendTrunk = function() {
+  sendMessage({
+    type:'image',
+    text: 'Your trunk is ready.',
+    actions: [
+      {
+        type: 'webview',
+        text: 'Review Trunk',
+        uri: 'https://i.imgur.com/5mPBt8y.png',
+        fallback: 'https://i.imgur.com/5mPBt8y.png',
+        size: 'tall'
+      }
+    ],
+    mediaType: 'image/png',
+    mediaUrl: 'https://i.imgur.com/KcovdCW.png'
+  });
+}
+
 Message.sendLink = function() {
   /** 4. Structured messages - link buttons */
   sendMessage({

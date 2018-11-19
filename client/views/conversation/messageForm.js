@@ -1,5 +1,5 @@
 var canPublish = true;
-var throttleTime = 500;
+var throttleTime = 200;
 var curValue = "";
 
 Template.messageForm.events({
@@ -76,6 +76,12 @@ Template.messageForm.events({
     event.preventDefault();
     Dropdowns.hideAll()
     Message.transferToOtt();
+  },
+
+  'click a.sendTrunk': function sendTrunk(event, instance) {
+    event.preventDefault();
+    Dropdowns.hideAll()
+    Message.sendTrunk();
   },
 
   'click a.leaveChat': function leaveChat(event, instance) {
