@@ -5,7 +5,11 @@ Template.home.onCreated(function () {
 
 Template.home.helpers({
   conversations: function () {
-    return Conversations.find();
+    return Conversations.find({owner: Meteor.user().emails[0].address});
+  },
+
+  otherconvos: function () {
+    return Conversations.find({owner: {'$ne': Meteor.user().emails[0].address}});
   },
 
   avatar: function () {

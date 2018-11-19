@@ -49,6 +49,7 @@ Template.conversation.helpers({
 
 Template.message.rendered = function() {
   this.lastNode.lastElementChild.scrollIntoView()
+  Message.sendReadReceipt();
 };
 
 Template.message.helpers({
@@ -91,4 +92,3 @@ Template.messageAction.helpers({
     return this.type === 'reply';
   }
 });
-

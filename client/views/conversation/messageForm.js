@@ -1,3 +1,7 @@
+var canPublish = true;
+var throttleTime = 500;
+var curValue = "";
+
 Template.messageForm.events({
   'keydown textarea': function sendText (event, instance) {
     if (event.keyCode == 13 && !event.shiftKey) { // Check if enter was pressed (but without shift).
@@ -19,6 +23,23 @@ Template.messageForm.events({
     $('article').css({
       'padding-bottom': $('footer').outerHeight()
     });
+  },
+
+  'keyup textarea': function sendTyping(event, instance) {
+    if(canPublish) {
+      curValue = instance.find('textarea').value;
+      Message.sendTypingIndicator(true);
+
+      canPublish = false;
+
+      setTimeout(function() {
+        if(curValue == instance.find('textarea').value) {
+          Message.sendTypingIndicator(false);
+        }
+
+        canPublish = true;
+      }, throttleTime)
+    }
   },
 
   'click a.link': function sendLink (event, instance) {
