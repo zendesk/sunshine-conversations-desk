@@ -24,11 +24,18 @@ function findConversation (body) {
 
 function createConversation (body) {
   let conv = findConversation(body)
+  let owner = "none";
+
+  if(body.appUser.properties && body.appUser.properties.owner) {
+      owner = body.appUser.properties.owner;
+  }
+
   if (!conv) {
     conv = {};
     conv._id = Conversations.insert({
       name: fullName(body),
       userId: body.appUser._id,
+      owner: owner,
       avatarUrl: Utils.resolveAvatarUrl(body.appUser)
     });
     return conv;
@@ -41,6 +48,8 @@ function addMessages (conversation, messages, name) {
   }
 
   messages.forEach(function (m) {
+    m.smoochMessageId = m._id;
+
     delete m._id;
     Messages.insert(Object.assign({}, m, {
       conversationId: conversation._id,
@@ -75,6 +84,20 @@ Router.map(function () {
             addMessages(conv, body.messages, fullName(body))
           }
           break;
+
+        case 'typing:appUser':
+          if(conv) {
+            let isTyping = false;
+
+            if(body.activity.type == "typing:start") {
+              isTyping = true;
+            }
+
+            console.log(isTyping);
+            
+            Conversations.update({_id: conv._id}, {$set: {typing: isTyping}});
+          }
+        break;
 
         case 'message:appMaker':
           if (!conv) {

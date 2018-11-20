@@ -11,6 +11,37 @@ Meteor.methods({
     /* */
   },
 
+  sendReadReceipt: (userId) => {
+    SmoochApi.appUsers.conversationActivity({
+      appId: Meteor.settings.public.smoochAppId,
+      userId: userId,
+      activityProps: {
+        role: 'appMaker',
+        type: 'conversation:read'
+      }
+    }).catch(console.error);
+  },
+
+  sendTyping: (userId, start) => {
+    let props = {
+      role:'appMaker',
+      type:'typing:stop'
+    }
+
+    if(start) {
+      props.type = 'typing:start';
+    }
+
+    console.log(start);
+    console.log(props);
+
+    SmoochApi.appUsers.conversationActivity({
+      appId: Meteor.settings.public.smoochAppId,
+      userId: userId,
+      activityProps: props
+    }).catch(console.error);
+  },
+
   getUser: (userId) => {
     /** 3. Get user profile */
     return SmoochApi.appUsers.get({

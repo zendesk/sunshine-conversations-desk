@@ -19,9 +19,59 @@ function sendMessage (message) {
   });
 }
 
+function sendReadReceipt () {
+  const conv = Conversations.findOne({
+    _id: Router.current().params._id
+  });
+
+  Meteor.call('sendReadReceipt', conv.userId, (err) => {
+    if (err) {
+      alert(err);
+    }
+  });
+}
+
+function sendTypingIndicator (start) {
+  const conv = Conversations.findOne({
+    _id: Router.current().params._id
+  });
+
+  Meteor.call('sendTyping', conv.userId, start, (err) => {
+    if (err) {
+      alert(err);
+    }
+  });
+}
+
+Message.sendReadReceipt = function() {
+  sendReadReceipt();
+}
+
+Message.sendTypingIndicator = function(start) {
+  sendTypingIndicator(start);
+}
+
 Message.sendText = function(text) {
   sendMessage({
     text
+  });
+}
+
+Message.sendTrunk = function() {
+  sendMessage({
+    type:'image',
+    text: 'Your trunk is ready.',
+    actions: [
+      {
+        type: 'webview',
+        text: 'Review Trunk',
+        uri: 'https://i.imgur.com/5mPBt8y.png',
+        fallback: 'https://i.imgur.com/5mPBt8y.png',
+        size: 'tall'
+      }
+    ],
+    mediaType: 'image/png',
+    mediaUrl: 'https://i.imgur.com/KcovdCW.png'
   });
 }
 

@@ -12,8 +12,15 @@
     </span>
   </div>
 
+  <div class="conv-header">Assigned Conversations</div>
   <ul>
     {{#each conversations}}
+      {{> conversationListItem}}
+    {{/each}}
+  </ul>
+  <div class="conv-header">Other Conversations</div>
+  <ul>
+    {{#each otherconvos}}
       {{> conversationListItem}}
     {{/each}}
   </ul>
@@ -24,6 +31,7 @@
   <a href="/conversation/{{_id}}">
     <li>
       <img class="avatar" src={{avatarUrl}} />{{name}}
+      <p>{{#if typing}}Typing...{{else}}{{/if}}</p>
     </li>
   </a>
 </template>
