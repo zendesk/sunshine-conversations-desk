@@ -1,0 +1,7 @@
+{
+    "smoochKeyId": "act_xxxxxxx",
+    "smoochSecret": "your_secret",
+    "public": {
+        "smoochAppId": "your_app_id"
+    }
+}
